@@ -1,12 +1,15 @@
-require("dotenv").config();
+// require("dotenv").config();
 const colors = require("colors");
 
 var express = require('express');
 var app = express();
 var PORT = process.env.PORT || 9000;
-var config = require("./config");
+var config = require("./config/config.js");
 let exphbs = require("express-handlebars");
+let routes = require("./controllers/sahara-controller.js");
 
+
+app.use(routes);
 
 app.use(express.static(__dirname + '/views'));
 app.use(express.urlencoded({extended: true}));
@@ -21,6 +24,3 @@ app.listen(PORT, function() {
   });
   
 
-// app.route('/').get(function(req, res){
-//     res.json(config);
-// })
