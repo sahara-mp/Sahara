@@ -7,11 +7,12 @@ var PORT = process.env.PORT || 9000;
 var config = require("./config/config.js");
 let exphbs = require("express-handlebars");
 let routes = require("./controllers/sahara-controller.js");
+let path = require('path');
 
 
 app.use(routes);
 
-app.use(express.static(__dirname + '/views'));
+app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
