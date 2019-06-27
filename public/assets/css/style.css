@@ -1,3 +1,12 @@
 .products-columns {
-    background-color: red;
+    background-color: rgb(193, 226, 236)
+}
+
+/* Sign Up Page */
+.signupDiv {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    /* align-items: center; */
+    flex-wrap: wrap;
 }

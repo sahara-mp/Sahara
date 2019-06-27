@@ -6,6 +6,11 @@ var product = {
         cb(res);
       });
     },
+    search: function(item, cb){
+      orm.search("products", item, function(res){
+        cb(res);
+      })
+    },
     // The variables cols and vals are arrays.
     create: function(cols, vals, cb) {
       orm.create("products", cols, vals, function(res) {
