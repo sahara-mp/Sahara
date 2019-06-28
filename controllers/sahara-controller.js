@@ -15,16 +15,17 @@ router.get("/", function (req, res) {
     });
 });
 
+//SEARCH BAR
 router.get("/api/:item", function (req, res){
     var searchTerm = req.params.item
-    console.log(req.params.item);
-    product.search(function (searchTerm){
+    product.search(searchTerm, function (data){
         var searchItem = {
-            products: searchTerm
+            products: data
         };
+        console.log(searchItem);
         res.render("index", searchItem);
-    })
-})
+    });
+});
 
 //LOGIN PAGE
 router.get("/login", function (req, res) {

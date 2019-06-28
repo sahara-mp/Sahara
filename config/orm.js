@@ -44,9 +44,9 @@ var orm = {
       cb(result);
     });
   },
-  search: function (tableInput, item, cb) {
+  search: function (tableInput, item, cb) { 
     var queryString = `SELECT * FROM ${tableInput} WHERE PRODUCT_NAME = '${item}';`;
-    config.query(queryString, function (err, result) {
+    config.query(queryString, item, function (err, result) {
       if (err) {
         throw err;
       }

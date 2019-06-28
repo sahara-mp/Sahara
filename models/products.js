@@ -8,6 +8,7 @@ var product = {
     },
     search: function(item, cb){
       orm.search("products", item, function(res){
+        console.log(cb);
         cb(res);
       })
     },

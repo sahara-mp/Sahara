@@ -1,8 +1,9 @@
 $(function () {
   $("form").on("submit", function (event) {
+    event.preventDefault();
     var item = $("#search-term").val().trim();
-
-    // Send the PUT request.
+    console.log(item);
+    // Send the GET request.
     $.ajax("/api/" + item, {
       type: "GET",
       data: item
