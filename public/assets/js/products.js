@@ -4,7 +4,7 @@ $(function () {
     var item = $("#search-term").val().trim();
     console.log(item);
     // Send the GET request.
-    $.ajax("/api/" + item, {
+    $.ajax("/api/search/" + item, {
       type: "GET",
       data: item
     }).then(
