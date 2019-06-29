@@ -17,7 +17,6 @@ router.get("/api/search/all", function (req, res) {
         };
         console.log("All", hbsObject);
         res.render("index", hbsObject);
-        // console.log(hbsObject);
     });
 });
 
