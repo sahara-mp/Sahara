@@ -1,6 +1,6 @@
 var mysql = require("mysql");
 const colors = require("colors");
-
+require("dotenv").config();
 // let config = {
 //     local: {
 //         mysql: {
@@ -20,7 +20,7 @@ var config = mysql.createConnection({
     host: "gzp0u91edhmxszwf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     port: 3306,
     user: "yy20bsqi5f95flj1",
-    password: "c2082uc03elkz865",
+    password: process.env.DB_PASSWORD,
     database: "uqju6zc4721rrz6v"
   });
 

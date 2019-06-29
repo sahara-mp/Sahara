@@ -5,9 +5,6 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/">SAHARA</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Home</a>
-                </li>
                 {{!-- <li class="nav-item active">
                     <a class="nav-link" href="#">Features</a>
                 </li>
@@ -18,11 +15,11 @@
         </div>
 
         {{!-- SEARCH BAR --}}
-        <div class="mx-auto order-0">
+        {{!-- <div class="mx-auto order-0">
             <form class="form-inline">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             </form>
-        </div>
+        </div> --}}
 
         {{!-- PROFILE DROPDOWN --}}
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
@@ -47,26 +44,26 @@
 {{!-- Sign up form --}}
 <div class="signupDiv">
     <div class="container bg-light mt-5 col-6">
-        <form class="signUpForm">
+        <form class="signUpForm" method="POST" action="/api/EmailAndPassword">
             <div class="form-group pt-3">
                 <label for="userFullName">Enter Full Name</label>
-                <input type="text" class="form-control" id="userFullName" aria-describedby="emailHelp"
-                    placeholder="Full Name">
+                <input type="text" class="form-control" aria-describedby="emailHelp"
+                    placeholder="Full Name" name="UserFullName">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Your Email address</label>
-                <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp"
-                    placeholder="Email">
+                <input type="email" class="form-control" aria-describedby="emailHelp"
+                    placeholder="Email" name="UserEmail">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Create Password</label>
-                <input type="password" class="form-control" id="userPassword" placeholder="Password">
+                <input type="password" class="form-control" placeholder="Password" name="UserPassword">
             </div>
             <div class="form-group form-check">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                 <label class="form-check-label" for="exampleCheck1">I am not a robot</label>
             </div>
-            <button type="submit" class="btn btn-warning mb-2" id="submitButton">Submit</button>
+            <button type="submit" class="btn btn-warning mb-2" id="submitButton" value="search">Submit</button>
         </form>
     </div>
 </div>

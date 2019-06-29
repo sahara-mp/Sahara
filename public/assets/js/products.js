@@ -1,42 +1,23 @@
-$(function () {
-  $("form").on("submit", function (event) {
-    event.preventDefault();
-    var item = $("#search-term").val().trim();
-    console.log(item);
-    // Send the GET request.
-    $.ajax("/api/search/" + item, {
-      type: "GET",
-      data: item
-    }).then(
-      function () {
-        console.log("Item has been found!");
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
-  });
-});
+// $(function () {
+//   $("#searchBar").on("submit", function (event) {
+//     event.preventDefault();
+//     // var item = $("#search-term").val().trim();
+//     // console.log(item);
 
-$(function () {
-  $(".signUpForm").on("submit", function (event) {
-    var newUser = {
-      userFullName: $("#userFullName").val().trim(),
-      userEmail: $("#userEmail").val().trim(),
-      userPassword: $("#userPassword").val().trim()
-    };
+//     var searchItem =  $("#search-term").val().trim();
+//     //Why is this item and not product_name?
+//     console.log(searchItem);
+//     // Send the GET request.
+//     $.ajax("/api/search/" + searchItem, {
+//       type: "POST",
+//       data: searchItem
+//     }).then(
+//       function () {
+//         console.log("Item has been found!");
+//         // Reload the page to get the updated list
+//         // location.reload();
+//       }
+//     );
+//   });
+// });
 
-    // var newUser = $("form").data("id");
-    console.log(newUser);
-    // Send the PUT request.
-    // $.ajax("/api/" + item, {
-    //   type: "GET",
-    //   data: item
-    // }).then(
-    //   function () {
-    //     console.log("Item has been found!");
-    //     // Reload the page to get the updated list
-    //     location.reload();
-    //   }
-    // );
-  });
-});

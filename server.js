@@ -3,14 +3,14 @@ const colors = require("colors");
 
 var express = require('express');
 var app = express();
+var login = require('./routes/loginroutes');
 var PORT = process.env.PORT || 9000;
+
 var config = require("./config/config.js");
 let exphbs = require("express-handlebars");
 let routes = require("./controllers/sahara-controller.js");
 let path = require('path');
 
-
-app.use(routes);
 
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.urlencoded({extended: true}));
@@ -18,6 +18,8 @@ app.use(express.json());
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+
+app.use(routes);
 
 
 app.listen(PORT, function() {
