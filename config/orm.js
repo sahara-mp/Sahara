@@ -22,9 +22,9 @@ function objToSql(ob) {
     if (Object.hasOwnProperty.call(ob, key)) {
       // if string with spaces, add quotations (Lana Del Grey => 'Lana Del Grey')
       if (typeof value === "string" && value.indexOf(" ") >= 0) {
-        value =  "'" + value + "'";
+        value = "'" + value + "'";
       }
-     
+
       arr.push(key + "=" + value);
     }
   }
@@ -38,6 +38,15 @@ var orm = {
   all: function (tableInput, cb) {
     var queryString = "SELECT * FROM " + tableInput + ";";
     config.query(queryString, function (err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
+  },
+  search: function (tableInput, item, cb) { 
+    var queryString = `SELECT * FROM ${tableInput} WHERE PRODUCT_NAME = '${item}';`;
+    config.query(queryString, item, function (err, result) {
       if (err) {
         throw err;
       }
