@@ -1,0 +1,26 @@
+.products-columns {
+    background-color: rgb(193, 226, 236)
+}
+
+/* Sign Up Page */
+.signupDiv {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    /* align-items: center; */
+    flex-wrap: wrap;
+}
+
+#searchBar {
+    display: flex;
+    justify-content: center;
+    /* flex-wrap: wrap; */
+    flex-direction: row;
+    flex-flow: nowrap;
+}
+
+#submit-button {
+    width: 75px;
+margin: 6px;
+border-radius: 5px;
+}

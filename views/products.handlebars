@@ -1,0 +1,92 @@
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-md navbar-dark bg-warning">
+        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">SAHARA</a>
+                </li>
+                {{!-- <li class="nav-item active">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li> --}}
+            </ul>
+        </div>
+
+        {{!-- SEARCH BAR --}}
+        <div class="SearchDiv">
+            <div class="mx-auto order-0">
+                <form class="form-inline" id="searchBar" method="POST" action="/search">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                        name="searchTerm" id="search-term">
+                    <input id="submit-button" type="submit" value="search">
+                </form>
+
+            </div>
+        </div>
+
+        {{!-- PROFILE DROPDOWN --}}
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown c">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Account
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/login">Log In</a>
+                        <a class="dropdown-item" href="/signup">Sign Up</a>
+                        {{!-- <a class="dropdown-item" href="#">Order history</a>
+                        <a class="dropdown-item" href="#">Profile Information</a> --}}
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+
+<div class="container-fluid mt-3" style="display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;">
+    <div class="btn-group">
+        <button class="btn btn-secondary btn-lg bg-warning" type="button">
+            Categories
+        </button>
+        <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split bg-warning"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="sr-only">Toggle Dropdown</span>
+            </input>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Home Decor</a>
+                <a class="dropdown-item" href="#">Movies</a>
+                <a class="dropdown-item" href="#">Outdoors</a>
+                <a class="dropdown-item" href="#">Pet Supplies</a>
+                <a class="dropdown-item" href="#">Video Games</a>
+                <a class="dropdown-item" href="#">Vinyl Records</a>
+            </div>
+    </div>
+</div>
+
+    <div class="row justify-content-center">
+        {{#each products}}
+        <div class="col-3 border border-primary bg-light m-1">
+            <div class="col-12">
+                <img src="{{image}}"
+                    class="card-img-top" alt="...">
+            </div>
+
+            <div class="col-12">
+                <h5 class="card-title"> {{product_name}}</h5>
+                <p class="card-text">${{product_price}}</p>
+                <p class="card-text">Quantity: {{product_price}}</p>
+                <p class="card-text"><small class="text-muted">{{product_description}}</small></p>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
