@@ -5,24 +5,30 @@ var router = express.Router();
 
 
 //HOME PAGE
-router.get("/", function (req, res) {
+router.get("/", function (req, res){
+        res.render("index");
+})
+
+//Displays all items
+router.get("/api/search/all", function (req, res) {
     product.all(function (data) {
         var hbsObject = {
             products: data
         };
+        console.log("All", hbsObject);
         res.render("index", hbsObject);
     });
 });
 
 //SEARCH BAR
-router.get("/api/:item", function (req, res){
+router.get("/api/search/:item", function (req, res){
     var searchTerm = req.params.item
     product.search(searchTerm, function (data){
-        var searchItem = {
+        var hbsObject = {
             products: data
         };
-        console.log(searchItem);
-        res.render("index", searchItem);
+        console.log(hbsObject);
+        res.render("index", hbsObject);
     });
 });
 
