@@ -11,7 +11,6 @@ router.get("/", function (req, res) {
             products: data
         };
         res.render("index", hbsObject);
-        // console.log(hbsObject);
     });
 });
 
