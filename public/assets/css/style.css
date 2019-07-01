@@ -1,6 +1,5 @@
 body {
-    background-image: url("https://backgrounddownload.com/wp-content/uploads/2018/09/marketplace-background-6.jpg");
-    background-repeat: no-repeat;
+    background: rgb(29, 29, 170) url("https://img.theculturetrip.com/768x432/wp-content/uploads/2017/07/marrakech-1.jpg") no-repeat fixed center;
     background-size: cover;
 }
 .products-columns {
