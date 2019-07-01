@@ -106,7 +106,7 @@
     <div class="row justify-content-center">
         {{#each products}}
         
-        <div class="col-3 border border-primary bg-light m-1">
+        <div class="col-3 border border-primary bg-light m-1" id="{{id}}">
             <div class="col-12 item-image">
                 <img src="{{image}}" alt="..." width="150">
             </div>
@@ -117,6 +117,7 @@
                 <p class="card-text">Quantity: {{product_price}}</p>
                 <p class="card-text"><small class="text-muted">{{product_description}}</small></p>
             </div>
+            <button data-id="{{id}}" class="updateButtons">Update Me!</button>
         </div>
         {{/each}}
     </div>
