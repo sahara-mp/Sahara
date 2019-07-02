@@ -11,6 +11,21 @@ var product = {
       cb(res);
     })
   },
+  category: function (item, cb) {
+    orm.category("products", item, function (res) {
+      cb(res);
+    })
+  },
+  topThree: function (item, cb) {
+    orm.topThree("products", item, function (res) {
+      cb(res);
+    })
+  },
+  searchid: function (item, cb) {
+    orm.searchid("products", item, function (res) {
+      cb(res);
+    })
+  },
   // The variables cols and vals are arrays.
   create: function (cols, vals, cb) {
     orm.create("products", cols, vals, function (res) {

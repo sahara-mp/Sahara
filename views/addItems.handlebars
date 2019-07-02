@@ -45,8 +45,12 @@
     <div class="container bg-light mt-5 col-6">
         <form class="addItemForm" method="POST" action="/api/addItem">
             <div class="form-group pt-3">
+                <label for="itemName">Enter User Name</label>
+                <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="User Name" name="user">
+            </div>
+            <div class="form-group pt-3">
                 <label for="itemName">Enter Item Name</label>
-                <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Item" name="ItemName">
+                <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Item" name="product_name">
             </div>
             {{!-- <div class="form-group">
                 <label for="itemCategory">Please Choose a Category</label>
@@ -71,23 +75,23 @@
             </div> --}}
             <div class="form-group">
                 <label for="ItemCategory">Please Enter a Category</label>
-                <input type="text" class="form-control" placeholder="Item Category" name="ItemCategory">
+                <input type="text" class="form-control" placeholder="Item Category" name="product_category">
             </div>
             <div class="form-group">
                 <label for="ItemPrice">Enter Item Price</label>
-                <input type="text" class="form-control" placeholder="Item Price" name="ItemPrice">
+                <input type="text" class="form-control" placeholder="Item Price" name="product_price">
             </div>
             <div class="form-group">
                 <label for="ItemDescription">Item Description</label>
-                <input type="text" class="form-control" placeholder="Item Description" name="ItemDescription">
+                <input type="text" class="form-control" placeholder="Item Description" name="product_description">
             </div>
             <div class="form-group">
                 <label for="ItemQuantity">Item Quantity</label>
-                <input type="text" class="form-control" placeholder="Item Quantity" name="ItemQuantity">
+                <input type="text" class="form-control" placeholder="Item Quantity" name="quantity_remaining">
             </div>
             <div class="form-group">
                 <label for="ItemImage">Item Image Link</label>
-                <input type="text" class="form-control" placeholder="Item Image Link" name="ItemImage">
+                <input type="text" class="form-control" placeholder="Item Image Link" name="image">
             </div>
             <button type="submit" class="btn btn-warning mb-2" id="submitButtonItem" value="addItem">Add Item!</button>
         </form>

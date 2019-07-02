@@ -1,34 +1,45 @@
 const express = require("express");
 let product = require("../models/products.js");
 let user = require("../models/user.js");
+// let category = require("../public/assets/js/categories.js");
 
 var router = express.Router();
 
 
 //HOME PAGE
 router.get("/", function (req, res) {
+    product.topThree(function (data) {
+        var hbsObject = {
+            products: data
+        }
+    })
+    res.render("index", { "topThree": [] });
+});
+
+// Displays all items
+router.get("/api/search/all", function (req, res) {
     product.all(function (data) {
         var hbsObject = {
             products: data
         };
+        // console.log("All", hbsObject);
         res.render("index", hbsObject);
     });
 });
 
-//Displays all items
-// router.get("/api/search/all", function (req, res) {
-//     product.all(function (data) {
-//         var hbsObject = {
-//             products: data
-//         };
-//         // console.log("All", hbsObject);
-//         res.render("index", hbsObject);
-//     });
-// });
-
 //SEARCH BAR
-router.post("/search", function (req, res) {
+router.post("/api/search", function (req, res) {
     product.search(req.body.searchTerm, function (data) {
+        res.render("index", { products: data });
+    });
+});
+
+//Categories Dropdown
+router.get("/categories/:category", function (req, res) {
+    var category = req.params.category;
+    console.log('and the category is', category);
+    product.category(category, function (data) {
+
         res.render("index", { products: data });
     });
 });
@@ -65,7 +76,17 @@ router.get("/orderhistory", function (req, res) {
 
 router.get("/addItems", function (req, res) {
     res.render("addItems");
-})
+});
+
+router.get("/products/", function (req, res) {
+    res.render("products");
+});
+
+router.get("/products/:product", function (req, res) {
+    product.searchid(req.params.product, function (data) {
+        res.render("products", { product: data });
+    });
+});
 
 router.post("/api/EmailAndPassword", function (req, res) {
     user.create([
@@ -74,19 +95,35 @@ router.post("/api/EmailAndPassword", function (req, res) {
             req.body.UserFullName, req.body.UserEmail, req.body.UserPassword
         ], function (result) {
             //redirect to new user profile page after completion
-            res.json({ id: result.insertId });
+            // res.json({ id: result.insertId });
+            // console.log(result.insertId);
+            let userId = result.insertId;
+            //login function bypassing checking password
         });
 });
 
 router.post("/api/addItem", function (req, res) {
+    let newItem = {
+        user: req.body.user, 
+        product_name: req.body.product_name,
+        product_cateogry: req.body.product_category,
+        product_price: req.body.product_price, 
+        product_description: req.body.product_description, 
+        quantity_remaining: req.body.quantity_remaining, 
+        image: req.body.image
+    };
+    console.log(newItem);
     product.create([
-        "product_name", "product_category", "product_price", "product_description", "quantity_remaining"
+        "user", "product_name", "product_category", "product_price", "product_description", "quantity_remaining", "image"
     ], [
-            req.body.ItemName, req.body.ItemCategory, req.body.ItemPrice, req.body.ItemDescription, req.body.ItemQuantity, req.body.ItemImage
-        ], function (result) {
-            //redirect to new item page listing after completion
-            console.log(result);
-            res.json({ id: result.insertId });
-        });
+        req.body.user, req.body.product_name, req.body.product_category, req.body.product_price, req.body.product_description, req.body.quantity_remaining, req.body.image
+    ], function (result) {
+        //redirect to new item page listing after completion
+        console.log(result);
+        // res.render("products", { product: newItem });
+        window.location.replace(`/products/${newItem.product_name}`);
+    });
 });
+
+
 module.exports = router;

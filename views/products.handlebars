@@ -71,22 +71,19 @@
     </div>
 </div>
 
-    <div class="row justify-content-center">
-        {{#each products}}
-        <div class="col-3 border border-primary bg-light m-1">
-            <div class="col-12">
-                <img src="{{image}}"
-                    class="card-img-top" alt="...">
-            </div>
-
-            <div class="col-12">
-                <h5 class="card-title"> {{product_name}}</h5>
-                <p class="card-text">${{product_price}}</p>
-                <p class="card-text">Quantity: {{product_price}}</p>
-                <p class="card-text"><small class="text-muted">{{product_description}}</small></p>
-            </div>
-        </div>
-        {{/each}}
+<div class="row justify-content-center">
+    <div class="col-5 m-1">
+        <img src="{{product.image}}" class="card-img-top" alt="...">
     </div>
-</div>
+    <div class="col-5 border border-primary bg-light m-1">
+            <div class="col-12 justify-content-center">
+                <h2 "mx-auto"> {{product.product_name}}</h2>
+                <h2>${{product.product_price}}</h2>
+                <p>Quantity: {{product.quantity_remaining}}</p>
+                <p><small class="text-muted">Product Description: {{product.product_description}}</small></p>
+            </div>
 
+    </div>
+
+</div>
+</div>
