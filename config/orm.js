@@ -62,13 +62,13 @@ var orm = {
       cb(result);
     });
   },
-  topThree: function (tableInput, item, cb) { 
+  topThree: function (tableInput, cb) { 
     var queryString = `SELECT * FROM ${tableInput} ORDER BY quantity_remaining DESC LIMIT 3;`;
-    var searchQuery = config.query(queryString, item, function (err, result) {
+    var searchQuery = config.query(queryString, function (err, result) {
       if (err) {
         throw err;
       }
-      cb(result[0]);
+      cb(result);
     });
   },
   category: function (tableInput, item, cb) { 

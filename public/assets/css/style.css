@@ -32,4 +32,19 @@ body {
     margin: 6px;
     border-radius: 5px;
 }
-.pointer {cursor: pointer;}
+.pointer {
+    cursor: pointer;
+}
+
+.container img {
+    width: 70%;
+}
+
+#imageModifyDiv {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    /* align-items: center; */
+    flex-wrap: wrap;
+}
+

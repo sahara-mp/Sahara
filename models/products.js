@@ -16,8 +16,8 @@ var product = {
       cb(res);
     })
   },
-  topThree: function (item, cb) {
-    orm.topThree("products", item, function (res) {
+  topThree: function (cb) {
+    orm.topThree("products", function (res) {
       cb(res);
     })
   },

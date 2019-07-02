@@ -10,10 +10,12 @@ var router = express.Router();
 router.get("/", function (req, res) {
     product.topThree(function (data) {
         var hbsObject = {
-            products: data
-        }
-    })
-    res.render("index", { "topThree": [] });
+            "products": data,
+            "test":"testing"
+        };
+        // console.log("ViewModel", hbsObject);
+        res.render("index", hbsObject);
+    });
 });
 
 // Displays all items
