@@ -80,12 +80,14 @@ router.get("/addItems", function (req, res) {
     res.render("addItems");
 });
 
-router.get("/products/", function (req, res) {
+router.get("/products", function (req, res) {
     res.render("products");
 });
 
 router.get("/products/:product", function (req, res) {
+    console.log(req.params.product);
     product.searchid(req.params.product, function (data) {
+        console.log(data);
         res.render("products", { product: data });
     });
 });
