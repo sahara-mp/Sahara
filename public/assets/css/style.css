@@ -48,3 +48,10 @@ body {
     flex-wrap: wrap;
 }
 
+
+.updateButton {
+    width: 100px;
+    margin: 6px;
+    border-radius: 5px;
+}
+

@@ -122,8 +122,8 @@ router.post("/api/addItem", function (req, res) {
     ], function (result) {
         //redirect to new item page listing after completion
         console.log(result);
-        // res.render("products", { product: newItem });
-        window.location.replace(`/products/${newItem.product_name}`);
+        res.render("products", { product: newItem });
+        
     });
 });
 
