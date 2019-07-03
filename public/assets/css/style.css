@@ -1,19 +1,6 @@
 body {
-    background-image: url("https://backgrounddownload.com/wp-content/uploads/2018/09/marketplace-background-6.jpg");
-    background-repeat: no-repeat;
+    background: rgb(29, 29, 170) url("https://images.unsplash.com/photo-1486314030120-d5ab85fe58cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80") no-repeat fixed center;
     background-size: cover;
-}
-.products-columns {
-    background-color: rgb(193, 226, 236)
-}
-
-/* Sign Up Page */
-.signupDiv {
-    display: flex;
-    /* flex-direction: column; */
-    justify-content: center;
-    /* align-items: center; */
-    flex-wrap: wrap;
 }
 
 #searchBar {
@@ -24,8 +11,47 @@ body {
     flex-flow: nowrap;
 }
 
+/* Categories Button */
+
+/* .bg-warning {
+   
+} */
+
+/* Sign Up Page */
+
+.signupDiv {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    /* align-items: center; */
+    flex-wrap: wrap;
+}
+
 #submit-button {
     width: 75px;
-margin: 6px;
-border-radius: 5px;
+    margin: 6px;
+    border-radius: 5px;
 }
+.pointer {
+    cursor: pointer;
+}
+
+.container img {
+    width: 70%;
+}
+
+#imageModifyDiv {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    /* align-items: center; */
+    flex-wrap: wrap;
+}
+
+
+.updateButton {
+    width: 100px;
+    margin: 6px;
+    border-radius: 5px;
+}
+

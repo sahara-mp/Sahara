@@ -53,6 +53,42 @@ var orm = {
       cb(result);
     });
   },
+  searchid: function (tableInput, item, cb) { 
+    var queryString = `SELECT * FROM ${tableInput} WHERE id = ${item};`;
+    var searchQuery = config.query(queryString, item, function (err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result[0]);
+    });
+  },
+  topThree: function (tableInput, cb) { 
+    var queryString = `SELECT * FROM ${tableInput} ORDER BY quantity_remaining DESC LIMIT 3;`;
+    var searchQuery = config.query(queryString, function (err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
+  },
+  category: function (tableInput, item, cb) { 
+    var queryString = `SELECT * FROM ${tableInput} WHERE PRODUCT_CATEGORY = '${item}';`;
+    var searchQuery = config.query(queryString, item, function (err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
+  },
+  userPage: function (table, user, cb) {
+    var queryString = `SELECT * FROM ${table} WHERE id = '${user}';`;
+    var searchQuery = config.query(queryString, user, function (err, result) {
+      if (err){
+        throw err;
+      }
+      cb(result[0]);
+    });
+  },
   create: function (table, cols, vals, cb) {
     var queryString = "INSERT INTO " + table;
 

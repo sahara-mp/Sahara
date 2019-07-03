@@ -17,7 +17,7 @@
         {{!-- SEARCH BAR --}}
         <div class="SearchDiv">
             <div class="mx-auto order-0">
-                <form class="form-inline" id="searchBar" method="POST" action="/search">
+                <form class="form-inline" id="searchBar" method="POST" action="/api/search">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
                         name="searchTerm" id="search-term">
                     <input id="submit-button" type="submit" value="search">
@@ -61,80 +61,35 @@
             <span class="sr-only">Toggle Dropdown</span>
             </input>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Home Decor</a>
-                <a class="dropdown-item" href="#">Movies</a>
-                <a class="dropdown-item" href="#">Outdoors</a>
-                <a class="dropdown-item" href="#">Pet Supplies</a>
-                <a class="dropdown-item" href="#">Video Games</a>
-                <a class="dropdown-item" href="#">Vinyl Records</a>
+                <a class="dropdown-item category">Home Decor</a>
+                <a class="dropdown-item category">Movies</a>
+                <a class="dropdown-item category">Outdoors</a>
+                <a class="dropdown-item category">Pet Supplies</a>
+                <a class="dropdown-item category">Video Games</a>
+                <a class="dropdown-item category">Vinyl Records</a>
             </div>
     </div>
 </div>
 
 <br>
 <div class="container" id="newItems">
-    <div class="card-group">
-        <div class="card mx-2">
-            <img src="https://img.purch.com/w/660/aHR0cDovL3d3dy5saXZlc2NpZW5jZS5jb20vaW1hZ2VzL2kvMDAwLzEwNC84MTkvb3JpZ2luYWwvY3V0ZS1raXR0ZW4uanBn"
-                class="card-img-top img-fluid" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Item #1 Placeholder</h5>
-                <p class="card-text">Description goes here</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-        <div class="card mx-2">
-            <img src="https://img.purch.com/w/660/aHR0cDovL3d3dy5saXZlc2NpZW5jZS5jb20vaW1hZ2VzL2kvMDAwLzEwNC84MTkvb3JpZ2luYWwvY3V0ZS1raXR0ZW4uanBn"
-                class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Item #2 Placeholder</h5>
-                <p class="card-text">Description goes here</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-        <div class="card mx-2">
-            <img src="https://img.purch.com/w/660/aHR0cDovL3d3dy5saXZlc2NpZW5jZS5jb20vaW1hZ2VzL2kvMDAwLzEwNC84MTkvb3JpZ2luYWwvY3V0ZS1raXR0ZW4uanBn"
-                class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Item #3 Placeholder</h5>
-                <p class="card-text">Description goes here</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-    </div>
-
     <div class="row justify-content-center">
         {{#each products}}
-        
-        <div class="col-3 border border-primary bg-light m-1">
-            <div class="col-12 item-image">
-                <img src="{{image}}" alt="..." width="150">
+        <div class="col-3 border border-dark bg-light m-1">
+            <div id="imageModifyDiv">
+                <img src="{{this.image}}" class="card-img-top img-fluid product pointer" alt="productImage" data-id="{{id}}">
             </div>
+            <div class="">
 
-            <div class="col-12">
-                <h5 class="card-title"> {{product_name}}</h5>
-                <p class="card-text">${{product_price}}</p>
-                <p class="card-text">Quantity: {{product_price}}</p>
-                <p class="card-text"><small class="text-muted">{{product_description}}</small></p>
+                <h5 class="product pointer" style="text-align: center" data-id="{{id}}">{{this.product_name}}</h5>
+                <h2>${{this.product_price}}</h2>
+                <p>{{this.product_description}}</p>
+
             </div>
         </div>
         {{/each}}
+
     </div>
 </div>
 
-
-
-<br>
-
-{{!-- <div class="col-6 products-columns">
-    {{!-- {{#each products_data}}
-    <div>This is the search item: {{product_name}}</div>
-    {{/each}} --}}
-<ul>
-    {{#each products}}
-    <li>Name: {{product_name}}</li>
-    <li>${{product_price}}</li>
-    <li>Quantity: {{product_price}}</li>
-    {{/each}}
-</ul>
-</div> --}}
+<br><br>
