@@ -54,4 +54,8 @@ body {
     margin: 6px;
     border-radius: 5px;
 }
-
+.deleteButton {
+    width: 100px;
+    margin: 6px;
+    border-radius: 5px;
+}

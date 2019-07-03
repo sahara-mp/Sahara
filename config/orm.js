@@ -13,6 +13,7 @@ function printQuestionMarks(num) {
 
 // Helper function to convert object key/value pairs to SQL syntax
 function objToSql(ob) {
+  console.log("this is ob", ob);
   var arr = [];
 
   // loop through the keys and push the key/value as a string int arr
@@ -109,17 +110,35 @@ var orm = {
       cb(result);
     });
   },
-  // An example of objColVals would be {name: panther, sleepy: true}
-  update: function (table, objColVals, condition, cb) {
+
+  update: function (table, objColVals, itemId, cb) {
+    console.log("this is columns: ", objColVals);
+    console.log("this is itemId: ", itemId);
+
     var queryString = "UPDATE " + table;
 
     queryString += " SET ";
     queryString += objToSql(objColVals);
     queryString += " WHERE ";
+    queryString += itemId;
+
+    console.log("this is the column translation: ", objToSql(objColVals));
+
+    console.log("this is the querystring: ", queryString);
+    config.query(queryString, function (err, result) {
+      if (err) {
+        throw err;
+      }
+
+      cb(result);
+    });
+  },
+  delete: function(table, condition, cb) {
+    var queryString = "DELETE FROM " + table;
+    queryString += " WHERE ";
     queryString += condition;
 
-    console.log(queryString);
-    config.query(queryString, function (err, result) {
+    config.query(queryString, function(err, result) {
       if (err) {
         throw err;
       }

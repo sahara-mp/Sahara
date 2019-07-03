@@ -40,17 +40,23 @@
     </nav>
 </div>
 
-{{!-- Add Item form --}}
+{{!-- Update Item form --}}
 <div class="signupDiv">
     <div class="container bg-light mt-5 col-6">
-        <form class="addItemForm" method="POST" action="/api/addItem">
+        <form class="updateItemForm">
+            <div class="form-group pt-3">
+                <input type="hidden" class="form-control" aria-describedby="emailHelp" placeholder="Test" name="id"
+                    value="{{product.id}}" id="id">
+            </div>
             <div class="form-group pt-3">
                 <label for="itemName">Enter User Name</label>
-                <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="User Name" name="user">
+                <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="User Name"
+                    name="user" id="user">
             </div>
             <div class="form-group pt-3">
                 <label for="itemName">Enter Item Name</label>
-                <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Item" name="product_name">
+                <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Item"
+                    name="product_name" id="product_name">
             </div>
             {{!-- <div class="form-group">
                 <label for="itemCategory">Please Choose a Category</label>
@@ -75,25 +81,26 @@
             </div> --}}
             <div class="form-group">
                 <label for="ItemCategory">Please Enter a Category</label>
-                <input type="text" class="form-control" placeholder="Item Category" name="product_category">
+                <input type="text" class="form-control" placeholder="Item Category" name="product_category" id="product_category">
             </div>
             <div class="form-group">
                 <label for="ItemPrice">Enter Item Price</label>
-                <input type="text" class="form-control" placeholder="Item Price" name="product_price">
+                <input type="text" class="form-control" placeholder="Item Price" name="product_price" id="product_price">
             </div>
             <div class="form-group">
                 <label for="ItemDescription">Item Description</label>
-                <input type="text" class="form-control" placeholder="Item Description" name="product_description">
+                <input type="text" class="form-control" placeholder="Item Description" name="product_description" id="product_description">
             </div>
             <div class="form-group">
                 <label for="ItemQuantity">Item Quantity</label>
-                <input type="text" class="form-control" placeholder="Item Quantity" name="quantity_remaining">
+                <input type="text" class="form-control" placeholder="Item Quantity" name="quantity_remaining" id="quantity_remaining">
             </div>
             <div class="form-group">
                 <label for="ItemImage">Item Image Link</label>
-                <input type="text" class="form-control" placeholder="Item Image Link" name="image">
+                <input type="text" class="form-control" placeholder="Item Image Link" name="image" id="image">
             </div>
-            <button type="submit" class="btn btn-warning mb-2" id="submitButtonItem" value="addItem">Add Item!</button>
+            <button class="btn btn-warning mb-2" id="updateButtonItem" value="update">Update
+                Item!</button>
         </form>
     </div>
 </div>

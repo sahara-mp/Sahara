@@ -32,36 +32,16 @@ var product = {
       cb(res);
     });
   },
-  update: function (objColVals, condition, cb) {
-    orm.update("products", objColVals, condition, function (res) {
+  update: function (objColVals, itemId, cb) {
+    orm.update("products", objColVals, itemId, function (res) {
       cb(res);
     });
   },
-  // delete: function(){
-  //   orm.delete("products")
-  // }
+  delete: function(condition, cb) {
+    orm.delete("products", condition, function(res) {
+      cb(res);
+    });
+  }
 };
-
-// var user = {
-//   all: function (cb) {
-//     orm.all("EmailAndPassword", function (res) {
-//       cb(res);
-//     });
-//   },
-//   // The variables cols and vals are arrays.
-//   create: function (cols, vals, cb) {
-//     orm.create("EmailAndPassword", cols, vals, function (res) {
-//       cb(res);
-//     });
-//   },
-//   update: function (objColVals, condition, cb) {
-//     orm.update("EmailAndPassword", objColVals, condition, function (res) {
-//       cb(res);
-//     });
-//   },
-//   // delete: function(){
-//   //   orm.delete("EmailAndPassword")
-//   // }
-// };
 
 module.exports = product;

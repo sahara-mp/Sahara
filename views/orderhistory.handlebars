@@ -15,11 +15,15 @@
         </div>
 
         {{!-- SEARCH BAR --}}
-        <div class="mx-auto order-0">
-            <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
-                    id="search-term">
-            </form>
+        <div class="SearchDiv">
+            <div class="mx-auto order-0">
+                <form class="form-inline" id="searchBar" method="POST" action="/api/search">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                        name="searchTerm" id="search-term">
+                    <input id="submit-button" type="submit" value="search">
+                </form>
+
+            </div>
         </div>
 
         {{!-- PROFILE DROPDOWN --}}
