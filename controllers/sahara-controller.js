@@ -62,6 +62,11 @@ router.get("/login", function (req, res) {
     res.render("login");
 });
 
+//ABOUT PAGE
+router.get("/about", function (req, res) {
+    res.render("about");
+});
+
 //USER PROFILE PAGE 
 router.get("/userProfile", function (req, res) {
     res.render("profile");
@@ -130,20 +135,41 @@ router.get("/api/products/update/:product", function (req, res) {
 
 //CREATE NEW USER
 router.post("/api/EmailAndPassword", function (req, res) {
-    user.create([
-        "UserFullName", "UserEmail", "UserPassword"
-    ], [
-            req.body.UserFullName, req.body.UserEmail, req.body.UserPassword
-        ], function (result) {
-            //redirect to new user profile page after completion
-            // res.json({ id: result.insertId });
-            // console.log(result.insertId);
-            let userId = result.insertId;
-            //login function bypassing checking password
-        });
+    console.log("this is req.body.UserEmail:", req.body.UserEmail);
+    user.userPage(req.body.UserEmail, function (data){
+        console.log("this is UserPage data: ", data);
+        if (data){
+            let userExists = {
+                exists: "This User Already Exists"
+            }
+            console.log("This User Exists")
+            res.render("signup", { userExists: userExists })
+        }else {
+            user.create([
+                "UserFullName", "UserEmail", "UserPassword"
+            ], [
+                    req.body.UserFullName, req.body.UserEmail, req.body.UserPassword
+                ], function (result) {
+                    //redirect to new user profile page after completion
+                    // res.json({ id: result.insertId });
+                    // console.log(result.insertId);
+                    console.log("this is create result: ", result);
+                    let userId = result.insertId;
+                    console.log(userId);
+                    user.loginEmail(req.body.UserEmail, function(data) {
+                        console.log("this is login data: ", data)
+
+                            res.render("profile", { userInfo: data });
+
+                    });
+                    //login function bypassing checking password
+                });
+        }
+    }) 
+    
 });
 
-//user login
+// user login
 router.post("/api/login", function (req, res) {
     console.log(req.body);
     let UserEmail = req.body.UserEmail;
@@ -151,10 +177,6 @@ router.post("/api/login", function (req, res) {
     console.log("UserEmail: ", UserEmail);
     console.log("UserPass: ", UserPassword);
     let userLogin = [UserEmail, UserPassword]
-    // let userInfo = {
-    //     UserEmail,
-    //     UserPassword
-    // };
     console.log("this is userLogin", userLogin);
     user.login(userLogin, function(data) {
         console.log("this is login data: ", data)
@@ -168,6 +190,16 @@ router.post("/api/login", function (req, res) {
         }
     });
 });
+
+router.get("/api/userProfile/:user", function (req, res) {
+    let userEmail = req.params.user;
+    user.userPage(userEmail, function (data) {
+        console.log("this is userProfile data: ", data)
+        res.render("profile", { userInfo: data });
+    })
+})
+
+
 
 //ADD ITEM
 router.post("/api/addItem", function (req, res) {

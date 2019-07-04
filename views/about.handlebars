@@ -47,70 +47,19 @@
 </div>
 
 
-
-<div class="container-fluid mt-3" style="display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;">
-    <div class="btn-group">
-        <button class="btn btn-secondary btn-lg bg-warning" type="button">
-            Categories
-        </button>
-        <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split bg-warning"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="sr-only">Toggle Dropdown</span>
-            </input>
-            <div class="dropdown-menu">
-                <a class="dropdown-item category">Home Decor</a>
-                <a class="dropdown-item category">Movies</a>
-                <a class="dropdown-item category">Outdoors</a>
-                <a class="dropdown-item category">Pet Supplies</a>
-                <a class="dropdown-item category">Video Games</a>
-                <a class="dropdown-item category">Vinyl Records</a>
-            </div>
-    </div>
-</div>
-
-<br>
-
-<div class="row justify-content-center">
-    <div class="col-5 m-1">
-        <img src="{{product.image}}" class="card-img-top productImage" alt="...">
-    </div>
-    <div class="col-5 border border-primary bg-light m-1">
-        <div class="col-12 justify-content-center">
-            <br>
-            <h2 "mx-auto"> {{product.product_name}}</h2>
-            <h2>${{product.product_price}}</h2>
-            <p>In Stock:
-                <span style="font-weight: bold">{{product.quantity_remaining}}</span>
-            </p>
-            <hr>
-            <p><small class="text-muted">{{product.product_description}}</small></p>
-            <p><small class="text-muted">Seller: {{product.user}}</small></p>
-        </div>
-        <div class="productButtonsDiv">
-            <button class="buyButton productButtons bg-warning" data-id="{{product.id}}">Buy Me!</button>
-            <button class="updateButton productButtons bg-warning" data-id="{{product.id}}">Update Me!</button>
-            <button class="deleteButton productButtons bg-warning" data-id="{{product.id}}">Delete Me!</button>
-        </div>
-        <hr>
-        <div class="go-back-button-div">
-            <button class="btn btn-secondary btn-md bg-warning go-back-button" type="button">
-                Go Back
-            </button>
-        </div>
-    </div>
-
-</div>
-</div>
-
 <br><br>
 
-<br><br>
+<div class="container bg-white">
 
-{{!-- <div class="container-fluid footer bg-warning mb-0">
+    <h1>About Sahara</h1>
+
+</div>
+
+
+
+
+
+<div class="container-fluid footer bg-warning mb-0">
     <footer id="myFooter">
         <div class="container">
             <div class="row">
@@ -148,6 +97,8 @@
                 </div>
             </div>
         </div>
-
+        {{!-- <div class="footer-copyright">
+            <p>© 2019 Sahara </p>
+        </div> --}}
     </footer>
-</div> --}}
+</div>

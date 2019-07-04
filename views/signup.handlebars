@@ -43,6 +43,9 @@
 
 {{!-- Sign up form --}}
 <div class="signupDiv">
+    <h3 class="text-danger text-center">
+        {{#if userExists}}{{userExists.userExists}}{{else}}{{/if}}
+    </h3>
     <div class="container bg-light mt-5 col-6">
         <form class="signUpForm" method="POST" action="/api/EmailAndPassword">
             <div class="form-group pt-3">

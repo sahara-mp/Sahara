@@ -91,7 +91,7 @@ var orm = {
     });
   },
   userPage: function (table, user, cb) {
-    var queryString = `SELECT * FROM ${table} WHERE id = '${user}';`;
+    var queryString = `SELECT * FROM ${table} WHERE UserEmail = '${user}';`;
     var searchQuery = config.query(queryString, user, function (err, result) {
       if (err){
         throw err;
@@ -162,6 +162,19 @@ var orm = {
 
     console.log("this is the login query string: ", queryString);
     var searchQuery = config.query(queryString, userLogin, function (err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result[0]);
+    });
+  },
+  loginEmail: function(table, userEmail, cb){
+    console.log("this is orm userEmail:", userEmail);
+    
+    var queryString = `SELECT * FROM ${table} WHERE UserEmail = '${userEmail}'`;
+
+    console.log("this is the login query string: ", queryString);
+    var searchQuery = config.query(queryString, userEmail, function (err, result) {
       if (err) {
         throw err;
       }

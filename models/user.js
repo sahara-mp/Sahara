@@ -1,7 +1,7 @@
 let orm = require("../config/orm.js");
 
 var user = {
-    all: function (cb) {
+    search: function (cb) {
       orm.all("EmailAndPassword", function (res) {
         cb(res);
       });
@@ -13,6 +13,11 @@ var user = {
     },
     login: function(userLogin, cb){ 
       orm.login("EmailAndPassword", userLogin, function (res){
+        cb(res);
+      })
+    },
+    loginEmail: function(userEmail, cb){ 
+      orm.loginEmail("EmailAndPassword", userEmail, function (res){
         cb(res);
       })
     },

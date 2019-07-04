@@ -66,17 +66,25 @@ body {
     flex-wrap: wrap;
 }
 
+.productImage {
+    min-height: 490px;
+}
 
-/* NO PRODUCTS PAGE */
-.no-prod-div {
-    height: 120px;
+/* BACK BUTTON */
+.go-back-button-div {
     display: flex;
     justify-content: center;
     align-content: center;
     flex-wrap: wrap;
 }
+
+/* NO PRODUCTS PAGE */
+.no-prod-div {
+    height: 140px;
+}
 .no-prod-div h2 {
     font-size: 45px;
+    color: orangered;
 }
 
 .footer{
