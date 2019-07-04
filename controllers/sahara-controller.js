@@ -87,7 +87,7 @@ router.get("/products", function (req, res) {
 router.get("/api/products/:product", function (req, res) {
     console.log(req.params.product);
     product.searchid(req.params.product, function (data) {
-        console.log(data);
+        console.log(data.product_name);
         res.render("products", { product: data });
     });
 });
@@ -125,16 +125,26 @@ router.post("/api/addItem", function (req, res) {
         image: req.body.image
     };
     console.log(newItem);
-    product.create([
-        "user", "product_name", "product_category", "product_price", "product_description", "quantity_remaining", "image"
-    ], [
-            req.body.user, req.body.product_name, req.body.product_category, req.body.product_price, req.body.product_description, req.body.quantity_remaining, req.body.image
-        ], function (result) {
-            //redirect to new item page listing after completion
-            console.log(result);
-            res.render("products", { product: newItem });
-
-        });
+    product.search(newItem.product_name, function (data) {
+        if (data[0].product_name){
+            let alreadyExists = {
+                exists: "This Item Already Exists"
+            }
+            console.log("This Item Exists")
+            res.render("addItems", { thisExists: alreadyExists})
+        } else {
+            product.create([
+                "user", "product_name", "product_category", "product_price", "product_description", "quantity_remaining", "image"
+            ], [
+                    req.body.user, req.body.product_name, req.body.product_category, req.body.product_price, req.body.product_description, req.body.quantity_remaining, req.body.image
+                ], function (result) {
+                    //redirect to new item page listing after completion
+                    console.log(result);
+                    res.render("products", { product: newItem });
+        
+                });
+        }
+    });
 });
 
 router.put("/api/update/:id", function (req, res) {

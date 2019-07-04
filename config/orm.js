@@ -63,6 +63,15 @@ var orm = {
       cb(result[0]);
     });
   },
+  searchProduct: function (tableInput, item, cb) { 
+    var queryString = `SELECT * FROM ${tableInput} WHERE PRODUCT_NAME = ${item};`;
+    var searchQuery = config.query(queryString, item, function (err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result[0]);
+    });
+  },
   topThree: function (tableInput, cb) { 
     var queryString = `SELECT * FROM ${tableInput} ORDER BY quantity_remaining DESC LIMIT 3;`;
     var searchQuery = config.query(queryString, function (err, result) {

@@ -82,13 +82,14 @@ $(function () {
 
     $(".deleteButton").on("click", function (event) {
         event.preventDefault();
-
+        
         let id = $(this).data("id");
         $.ajax("/api/products/" + id, {
           type: "DELETE"
         }).then(
-          function () {
-            location.reload();
+          function () {            
+            alert("Successfully deleted!")
+            window.location.replace(`/`);
           }
         )
     });
