@@ -137,31 +137,51 @@ router.post("/api/addItem", function (req, res) {
         });
 });
 
-// router.post("/api/update", function (req, res) {
-//     var productId = req.body.id;
+router.put("/api/update/:id", function (req, res) {
+    var productId = req.params.id;
 
-//     console.log("product id: ", productId);
+    console.log("product id: ", productId);
+    console.log("req.body: ", req.body)
+    var updatesObj = {};
+    if (req.body.user){
+        updatesObj.user = req.body.user;
+        console.log("updates obj: ", updatesObj);
+    } 
+    if (req.body.product_name){
+        updatesObj.product_name = req.body.product_name;
+        console.log("updates obj: ", updatesObj);
+    }
+    if (req.body.product_category){
+        updatesObj.product_category = req.body.product_category;
+        console.log("updates obj: ", updatesObj);
+    }
+    if (req.body.product_price){
+        updatesObj.product_price = req.body.product_price;
+        console.log("updates obj: ", updatesObj);
+    }
+    if (req.body.product_description){
+        updatesObj.product_description = req.body.product_description;
+        console.log("updates obj: ", updatesObj);
+    }
+    if (req.body.quantity_remaining){
+        updatesObj.quantity_remaining = req.body.quantity_remaining;
+        console.log("updates obj: ", updatesObj);
+    }
+    if (req.body.image){
+        updatesObj.image = req.body.image;
+        console.log("updates obj: ", updatesObj);
+    }
+    console.log("update Object: ", updatesObj);
 
-//     var updateObj = {
-//         user: req.body.user,
-//         product_name: req.body.product_name,
-//         product_category: req.body.product_category,
-//         product_price: req.body.product_category,
-//         product_description: req.body.product_description,
-//         quantity_remaining: req.body.quantity_remaining,
-//         image: req.body.image
-//     };
-//     console.log("update Object: ", updateObj);
-
-//     product.update(updateObj, productId, function (result) {
-//         if (result.changedRows == 0) {
-//             // If no rows were changed, then the ID must not exist, so 404
-//             return res.status(404).end();
-//         } else {
-//             res.status(200).end();
-//         }
-//     });
-// });
+    product.update(updatesObj, productId, function (result) {
+        if (result.changedRows == 0) {
+            // If no rows were changed, then the ID must not exist, so 404
+            return res.status(404).end();
+        } else {
+            res.status(200).end();
+        }
+    });
+});
 
 router.delete("/api/products/:id", function (req, res) {
     var condition = "id = " + req.params.id;

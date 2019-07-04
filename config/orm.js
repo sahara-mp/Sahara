@@ -46,7 +46,7 @@ var orm = {
     });
   },
   search: function (tableInput, item, cb) { 
-    var queryString = `SELECT * FROM ${tableInput} WHERE PRODUCT_NAME LIKE '%${item}%';`;
+    var queryString = `SELECT * FROM ${tableInput} WHERE CONCAT(PRODUCT_NAME, PRODUCT_CATEGORY, PRODUCT_DESCRIPTION) LIKE '%${item}%';`;
     var searchQuery = config.query(queryString, item, function (err, result) {
       if (err) {
         throw err;
@@ -119,7 +119,7 @@ var orm = {
 
     queryString += " SET ";
     queryString += objToSql(objColVals);
-    queryString += " WHERE ";
+    queryString += " WHERE id=";
     queryString += itemId;
 
     console.log("this is the column translation: ", objToSql(objColVals));
