@@ -46,7 +46,6 @@
     </nav>
 </div>
 
-
 <div class="container-fluid mt-3" style="display: flex;
     flex-direction: column;
     justify-content: center;
@@ -77,7 +76,8 @@
         {{#each products}}
         <div class="col-3 border border-dark bg-light m-1">
             <div id="imageModifyDiv">
-                <img src="{{this.image}}" class="card-img-top img-fluid product pointer" alt="productImage" data-id="{{id}}">
+                <img src="{{this.image}}" class="card-img-top img-fluid product pointer" alt="productImage"
+                    data-id="{{id}}">
             </div>
             <div class="">
 
@@ -93,3 +93,49 @@
 </div>
 
 <br><br>
+
+<br><br>
+
+<div class="container-fluid bg-warning mb-0">
+    <footer id="myFooter">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 myCols">
+                    <h5>Get started</h5>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Products</a></li>
+                        <li><a href="#">Account</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 myCols">
+                    <h5>About us</h5>
+                    <ul>
+                        <li><a href="#">Company Information</a></li>
+                        <li><a href="#">Contact us</a></li>
+                        <li><a href="#">Reviews</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 myCols">
+                    <h5>Support</h5>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Help desk</a></li>
+                        <li><a href="#">Forums</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 myCols">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {{!-- <div class="footer-copyright">
+            <p>© 2019 Sahara </p>
+        </div> --}}
+    </footer>
+</div>

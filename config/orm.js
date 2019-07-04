@@ -13,6 +13,7 @@ function printQuestionMarks(num) {
 
 // Helper function to convert object key/value pairs to SQL syntax
 function objToSql(ob) {
+  console.log("this is ob", ob);
   var arr = [];
 
   // loop through the keys and push the key/value as a string int arr
@@ -45,7 +46,7 @@ var orm = {
     });
   },
   search: function (tableInput, item, cb) { 
-    var queryString = `SELECT * FROM ${tableInput} WHERE PRODUCT_NAME LIKE '%${item}%';`;
+    var queryString = `SELECT * FROM ${tableInput} WHERE CONCAT(PRODUCT_NAME, PRODUCT_CATEGORY, PRODUCT_DESCRIPTION) LIKE '%${item}%';`;
     var searchQuery = config.query(queryString, item, function (err, result) {
       if (err) {
         throw err;
@@ -55,6 +56,15 @@ var orm = {
   },
   searchid: function (tableInput, item, cb) { 
     var queryString = `SELECT * FROM ${tableInput} WHERE id = ${item};`;
+    var searchQuery = config.query(queryString, item, function (err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result[0]);
+    });
+  },
+  searchProduct: function (tableInput, item, cb) { 
+    var queryString = `SELECT * FROM ${tableInput} WHERE PRODUCT_NAME = ${item};`;
     var searchQuery = config.query(queryString, item, function (err, result) {
       if (err) {
         throw err;
@@ -109,17 +119,35 @@ var orm = {
       cb(result);
     });
   },
-  // An example of objColVals would be {name: panther, sleepy: true}
-  update: function (table, objColVals, condition, cb) {
+
+  update: function (table, objColVals, itemId, cb) {
+    console.log("this is columns: ", objColVals);
+    console.log("this is itemId: ", itemId);
+
     var queryString = "UPDATE " + table;
 
     queryString += " SET ";
     queryString += objToSql(objColVals);
+    queryString += " WHERE id=";
+    queryString += itemId;
+
+    console.log("this is the column translation: ", objToSql(objColVals));
+
+    console.log("this is the querystring: ", queryString);
+    config.query(queryString, function (err, result) {
+      if (err) {
+        throw err;
+      }
+
+      cb(result);
+    });
+  },
+  delete: function(table, condition, cb) {
+    var queryString = "DELETE FROM " + table;
     queryString += " WHERE ";
     queryString += condition;
 
-    console.log(queryString);
-    config.query(queryString, function (err, result) {
+    config.query(queryString, function(err, result) {
       if (err) {
         throw err;
       }

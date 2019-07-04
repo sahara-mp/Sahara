@@ -49,9 +49,62 @@ body {
 }
 
 
-.updateButton {
+
+.productButtons {
     width: 100px;
     margin: 6px;
     border-radius: 5px;
 }
 
+
+.footer{
+    position: absolute;
+    bottom: 0;
+}
+
+#myFooter {
+    color:white;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 0;
+
+}
+
+
+#myFooter ul{
+	list-style-type: none;
+    padding-left: 0;
+    line-height: 1.7;
+
+}
+
+#myFooter h5{
+	font-size: 18px;
+    color: black;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+#myFooter a{
+	color: white;
+	text-decoration: none;
+}
+
+#myFooter a:hover, #myFooter a:focus{
+	text-decoration: none;
+	color:blue;
+}
+
+#myFooter .myCols{
+	text-align: center;
+}
+
+
+
+
+
+@media screen and (max-width: 767px){
+	#myFooter {
+		text-align: center;
+	}
+}

@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <nav class="navbar navbar-expand-md navbar-dark bg-warning">
+        <nav class="navbar navbar-expand-md navbar-dark bg-warning">
         <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
@@ -46,80 +46,68 @@
     </nav>
 </div>
 
-<br><br>
 
-
-<div class="container">
-    <div class="row">
-        <div class="card-group col-4">
-            <div class="card mx-2">
-                <img src="https://img.purch.com/w/660/aHR0cDovL3d3dy5saXZlc2NpZW5jZS5jb20vaW1hZ2VzL2kvMDAwLzEwNC84MTkvb3JpZ2luYWwvY3V0ZS1raXR0ZW4uanBn"
-                    class="card-img-top img-fluid" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Item #1 Placeholder</h5>
-                    <p class="card-text">Description goes here</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
+{{!-- Update Item form --}}
+<div class="signupDiv">
+    <div class="container bg-light mt-5 col-6">
+        <form class="updateItemForm">
+            <div class="form-group pt-3">
+                <input type="hidden" class="form-control" aria-describedby="emailHelp" placeholder="Test" name="id"
+                    value="{{product.id}}" id="id">
             </div>
-        </div>
-
-        <form class="col-7 bg-white pt-3 pb-0">
-            <div class="form-group row">
-                <label for="inputAddress" class="col-sm-2 col-form-label">Name</label>
-                <div class="col-sm-10">
-                    <input type="address" class="form-control" id="inputaddress">
-                </div>
+            <div class="form-group pt-3">
+                <label for="itemName">Enter User Name</label>
+                <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="User Name"
+                    name="user" id="user">
             </div>
-            <div class="form-group row">
-                <label for="inputAddress" class="col-sm-2 col-form-label">Address</label>
-                <div class="col-sm-10">
-                    <input type="address" class="form-control" id="inputaddress">
+            <div class="form-group pt-3">
+                <label for="itemName">Enter Item Name</label>
+                <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Item"
+                    name="product_name" id="product_name">
+            </div>
+            {{!-- <div class="form-group">
+                <label for="itemCategory">Please Choose a Category</label>
+                <div class="btn-group">
+                    <button class="btn btn-secondary btn-lg bg-warning" type="button">
+                        Categories
+                    </button>
+                    <button type="button"
+                        class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split bg-warning"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="ItemCategory">
+                        <span class="sr-only">Toggle Dropdown</span>
+                        </input>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Home Decor</a>
+                            <a class="dropdown-item" href="#">Movies</a>
+                            <a class="dropdown-item" href="#">Outdoors</a>
+                            <a class="dropdown-item" href="#">Pet Supplies</a>
+                            <a class="dropdown-item" href="#">Video Games</a>
+                            <a class="dropdown-item" href="#">Vinyl Records</a>
+                        </div>
                 </div>
+            </div> --}}
+            <div class="form-group">
+                <label for="ItemCategory">Please Enter a Category</label>
+                <input type="text" class="form-control" placeholder="Item Category" name="product_category" id="product_category">
             </div>
             <div class="form-group">
-                <label for="exampleFormControlSelect1">Quantity</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
+                <label for="ItemPrice">Enter Item Price</label>
+                <input type="text" class="form-control" placeholder="Item Price" name="product_price" id="product_price">
             </div>
-            <fieldset class="form-group">
-                <div class="row">
-                    <legend class="col-form-label col-sm-2 pt-0">Shipping</legend>
-                    <div class="col-sm-10">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
-                                value="option1" checked>
-                            <label class="form-check-label" for="gridRadios1">
-                                One Day Shipping ($9.99)
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2"
-                                value="option2">
-                            <label class="form-check-label" for="gridRadios2">
-                                Two day shipping ($4.99)
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3"
-                                value="option3">
-                            <label class="form-check-label" for="gridRadios3">
-                                Free Ground shipping (3-5 days)
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </fieldset>
-
-            <div class="form-group row pt-5">
-                <div class="col-sm-10">
-                    <button type="submit" class="btn btn-warning">Purchase</button>
-                </div>
+            <div class="form-group">
+                <label for="ItemDescription">Item Description</label>
+                <input type="text" class="form-control" placeholder="Item Description" name="product_description" id="product_description">
             </div>
+            <div class="form-group">
+                <label for="ItemQuantity">Item Quantity</label>
+                <input type="text" class="form-control" placeholder="Item Quantity" name="quantity_remaining" id="quantity_remaining">
+            </div>
+            <div class="form-group">
+                <label for="ItemImage">Item Image Link</label>
+                <input type="text" class="form-control" placeholder="Item Image Link" name="image" id="image">
+            </div>
+            <button class="btn btn-warning mb-2" id="updateButtonItem" value="update">Update
+                Item!</button>
         </form>
     </div>
 </div>
