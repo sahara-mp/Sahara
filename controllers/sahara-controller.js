@@ -32,7 +32,12 @@ router.get("/api/search/all", function (req, res) {
 //SEARCH BAR
 router.post("/api/search", function (req, res) {
     product.search(req.body.searchTerm, function (data) {
-        res.render("index", { products: data });
+        console.log("this is search bar data: ", data)
+        if (!data){
+            res.render("noProduct");
+        } else {
+            res.render("index", { products: data });
+        }
     });
 });
 
@@ -76,22 +81,30 @@ router.get("/orderhistory", function (req, res) {
     res.render("orderhistory");
 });
 
+//add Items Page
 router.get("/addItems", function (req, res) {
     res.render("addItems");
 });
 
+//products page
 router.get("/products", function (req, res) {
     res.render("products");
 });
 
+//get product by id
 router.get("/api/products/:product", function (req, res) {
     console.log(req.params.product);
     product.searchid(req.params.product, function (data) {
-        console.log(data.product_name);
-        res.render("products", { product: data });
+        // console.log(data.product_name);
+        if (!data){
+            res.render("noProduct");
+        } else {
+            res.render("products", { product: data });
+        }
     });
 });
 
+//update product
 router.get("/api/products/update/:product", function (req, res) {
     console.log("this is req.params.product: ", req.params.product);
     product.searchid(req.params.product, function (data) {
@@ -114,6 +127,7 @@ router.post("/api/EmailAndPassword", function (req, res) {
         });
 });
 
+//routing to add item
 router.post("/api/addItem", function (req, res) {
     let newItem = {
         user: req.body.user,
@@ -147,6 +161,7 @@ router.post("/api/addItem", function (req, res) {
     });
 });
 
+//routing to update item
 router.put("/api/update/:id", function (req, res) {
     var productId = req.params.id;
 
@@ -193,6 +208,7 @@ router.put("/api/update/:id", function (req, res) {
     });
 });
 
+//routing to delete item
 router.delete("/api/products/:id", function (req, res) {
     var condition = "id = " + req.params.id;
 

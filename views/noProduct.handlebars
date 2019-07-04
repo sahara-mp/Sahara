@@ -15,11 +15,16 @@
         </div>
 
         {{!-- SEARCH BAR --}}
-        {{!-- <div class="mx-auto order-0">
-            <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            </form>
-        </div> --}}
+        <div class="SearchDiv">
+            <div class="mx-auto order-0">
+                <form class="form-inline" id="searchBar" method="POST" action="/api/search">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                        name="searchTerm" id="search-term">
+                    <input id="submit-button" type="submit" value="search">
+                </form>
+
+            </div>
+        </div>
 
         {{!-- PROFILE DROPDOWN --}}
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
@@ -42,32 +47,46 @@
 </div>
 
 
-<div class="container bg-light mt-5 col-6 pb-3">
-    <form action="login.php" method="POST">
-        <div class="form-group pt-3">
-            <label for="UserEmail">Email address</label>
-            <input type="email" class="form-control" name="UserEmail" id="InputEmail1" aria-describedby="emailHelp"
-                placeholder="Enter email">
-        </div>
-        <div class="form-group">
-            <label for="UserPassword">Password</label>
-            <input type="password" name="UserPassword" class="form-control" id="InputPassword1" placeholder="Password">
-        </div>
-        <button type="submit" name="submit" class="btn btn-warning mb-2">Submit</button>
-    </form>
+
+<div class="container-fluid mt-3" style="display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;">
+    <div class="btn-group">
+        <button class="btn btn-secondary btn-lg bg-warning" type="button">
+            Categories
+        </button>
+        <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split bg-warning"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="sr-only">Toggle Dropdown</span>
+            </input>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Home Decor</a>
+                <a class="dropdown-item" href="#">Movies</a>
+                <a class="dropdown-item" href="#">Outdoors</a>
+                <a class="dropdown-item" href="#">Pet Supplies</a>
+                <a class="dropdown-item" href="#">Video Games</a>
+                <a class="dropdown-item" href="#">Vinyl Records</a>
+            </div>
+    </div>
 </div>
-{{!-- <form name="login">
-Username<input type="text" name="userid"/>
-Password<input type="password" name="pswrd"/>
-<input type="button" onclick="check(this.form)" value="Login"/>
-<input type="reset" value="Cancel"/>
-</form> --}}
+
+<div class="row justify-content-center">
+    <div class="col-7 border border-primary bg-light m-1">
+            <div class="col-12 justify-content-center">
+                <h2 class="text-danger text-center">This Item Could Not Be Found!</h2>
+            </div>
+    </div>
+
+</div>
+</div>
 
 <br><br>
 
 <br><br>
 
-<div class="container-fluid footer bg-warning mb-0">
+{{!-- <div class="container-fluid footer bg-warning mb-0">
     <footer id="myFooter">
         <div class="container">
             <div class="row">
@@ -105,8 +124,6 @@ Password<input type="password" name="pswrd"/>
                 </div>
             </div>
         </div>
-        {{!-- <div class="footer-copyright">
-            <p>© 2019 Sahara </p>
-        </div> --}}
+
     </footer>
-</div>
+</div> --}}

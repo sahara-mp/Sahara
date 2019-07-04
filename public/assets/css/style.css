@@ -36,18 +36,25 @@ body {
     cursor: pointer;
 }
 
+/* Home Page Featured Products */
 .container img {
     width: 70%;
+    margin-top: 30px;
+    margin-bottom: 17px;
 }
 
 #imageModifyDiv {
     display: flex;
-    /* flex-direction: column; */
     justify-content: center;
-    /* align-items: center; */
     flex-wrap: wrap;
 }
 
+.featured-info h2 {
+    text-align: center;
+}
+.featured-info p {
+    margin: 0 22px 20px 22px;
+}
 
 
 .productButtons {
