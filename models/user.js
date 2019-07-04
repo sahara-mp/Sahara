@@ -11,6 +11,11 @@ var user = {
         cb(res);
       });
     },
+    login: function(userLogin, cb){ 
+      orm.login("EmailAndPassword", userLogin, function (res){
+        cb(res);
+      })
+    },
     // The variables cols and vals are arrays.
     create: function (cols, vals, cb) {
       orm.create("EmailAndPassword", cols, vals, function (res) {

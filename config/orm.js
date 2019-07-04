@@ -119,7 +119,6 @@ var orm = {
       cb(result);
     });
   },
-
   update: function (table, objColVals, itemId, cb) {
     console.log("this is columns: ", objColVals);
     console.log("this is itemId: ", itemId);
@@ -153,6 +152,20 @@ var orm = {
       }
 
       cb(result);
+    });
+  },
+  login: function(table, userLogin, cb){
+    console.log("this is orm userEmail:", userLogin[0]);
+    console.log("this is orm userpassword: ", userLogin[1]);
+    
+    var queryString = `SELECT * FROM ${table} WHERE UserEmail = ? && UserPassword = ?`;
+
+    console.log("this is the login query string: ", queryString);
+    var searchQuery = config.query(queryString, userLogin, function (err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result[0]);
     });
   }
 };

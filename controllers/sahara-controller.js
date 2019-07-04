@@ -18,7 +18,7 @@ router.get("/", function (req, res) {
     });
 });
 
-// Displays all items
+// DISPLAYS ALL ITEMS
 router.get("/api/search/all", function (req, res) {
     product.all(function (data) {
         var hbsObject = {
@@ -31,9 +31,10 @@ router.get("/api/search/all", function (req, res) {
 
 //SEARCH BAR
 router.post("/api/search", function (req, res) {
+    console.log(req.body);
     product.search(req.body.searchTerm, function (data) {
         console.log("this is search bar data: ", data)
-        if (!data){
+        if (data.length < 1) {
             res.render("noProduct");
         } else {
             res.render("index", { products: data });
@@ -41,7 +42,7 @@ router.post("/api/search", function (req, res) {
     });
 });
 
-//Categories Dropdown
+//CATEGORIES DROPDOWN
 router.get("/categories/:category", function (req, res) {
     var category = req.params.category;
     console.log('and the category is', category);
@@ -51,12 +52,17 @@ router.get("/categories/:category", function (req, res) {
     });
 });
 
+//NO PRODUCT PAGE
+router.get("/noProduct", function (req, res) {
+    res.render("noProduct");
+});
+
 //LOGIN PAGE
 router.get("/login", function (req, res) {
     res.render("login");
 });
 
-//User Profile Page Route
+//USER PROFILE PAGE 
 router.get("/userProfile", function (req, res) {
     res.render("profile");
 })
@@ -66,37 +72,46 @@ router.get("/signup", function (req, res) {
     res.render("signup");
 });
 
-//Purchase Page
+//PURCHASE PAGE
 router.get("/purchase", function (req, res) {
-    res.render("purchase");
+    // console.log(req.params.product);
+    // product.searchid(req.params.product, function (data) {
+    //     // console.log(data.product_name);
+    //     if (!data) {
+    //         res.render("noProduct");
+    //     } else {
+    //         res.render("products", { product: data });
+    //     }
+    // });
+    res.render('purchase')
 });
 
-//Purchase Confirmation Page
+//PURCHASE CONFIRMATION PAGE
 router.get("/confirmation", function (req, res) {
     res.render("confirmation");
 });
 
-//Order History Page
+//ORDER HISTORY PAGE
 router.get("/orderhistory", function (req, res) {
     res.render("orderhistory");
 });
 
-//add Items Page
+//ADD ITEMS PAGE
 router.get("/addItems", function (req, res) {
     res.render("addItems");
 });
 
-//products page
+//PRODUCTS PAGE
 router.get("/products", function (req, res) {
     res.render("products");
 });
 
-//get product by id
+//GET PRODUCT ID FOR ON CLICK FUNCTION
 router.get("/api/products/:product", function (req, res) {
     console.log(req.params.product);
     product.searchid(req.params.product, function (data) {
         // console.log(data.product_name);
-        if (!data){
+        if (!data) {
             res.render("noProduct");
         } else {
             res.render("products", { product: data });
@@ -104,7 +119,7 @@ router.get("/api/products/:product", function (req, res) {
     });
 });
 
-//update product
+//UPDATE PRODUCT
 router.get("/api/products/update/:product", function (req, res) {
     console.log("this is req.params.product: ", req.params.product);
     product.searchid(req.params.product, function (data) {
@@ -113,6 +128,7 @@ router.get("/api/products/update/:product", function (req, res) {
     });
 });
 
+//CREATE NEW USER
 router.post("/api/EmailAndPassword", function (req, res) {
     user.create([
         "UserFullName", "UserEmail", "UserPassword"
@@ -127,7 +143,33 @@ router.post("/api/EmailAndPassword", function (req, res) {
         });
 });
 
-//routing to add item
+//user login
+router.post("/api/login", function (req, res) {
+    console.log(req.body);
+    let UserEmail = req.body.UserEmail;
+    let UserPassword = req.body.UserPassword;
+    console.log("UserEmail: ", UserEmail);
+    console.log("UserPass: ", UserPassword);
+    let userLogin = [UserEmail, UserPassword]
+    // let userInfo = {
+    //     UserEmail,
+    //     UserPassword
+    // };
+    console.log("this is userLogin", userLogin);
+    user.login(userLogin, function(data) {
+        console.log("this is login data: ", data)
+        if (!data) {
+            let badLogin = {
+                badLogin: "The Email or Password entered is incorrect"
+            }
+            res.render("login", {badLogin: badLogin});
+        } else {
+            res.render("profile", { userInfo: data });
+        }
+    });
+});
+
+//ADD ITEM
 router.post("/api/addItem", function (req, res) {
     let newItem = {
         user: req.body.user,
@@ -140,12 +182,12 @@ router.post("/api/addItem", function (req, res) {
     };
     console.log(newItem);
     product.search(newItem.product_name, function (data) {
-        if (data[0].product_name){
+        if (data[0].product_name) {
             let alreadyExists = {
                 exists: "This Item Already Exists"
             }
             console.log("This Item Exists")
-            res.render("addItems", { thisExists: alreadyExists})
+            res.render("addItems", { thisExists: alreadyExists })
         } else {
             product.create([
                 "user", "product_name", "product_category", "product_price", "product_description", "quantity_remaining", "image"
@@ -155,44 +197,44 @@ router.post("/api/addItem", function (req, res) {
                     //redirect to new item page listing after completion
                     console.log(result);
                     res.render("products", { product: newItem });
-        
+
                 });
         }
     });
 });
 
-//routing to update item
+//UPDATING ITEM
 router.put("/api/update/:id", function (req, res) {
     var productId = req.params.id;
 
     console.log("product id: ", productId);
     console.log("req.body: ", req.body)
     var updatesObj = {};
-    if (req.body.user){
+    if (req.body.user) {
         updatesObj.user = req.body.user;
         console.log("updates obj: ", updatesObj);
-    } 
-    if (req.body.product_name){
+    }
+    if (req.body.product_name) {
         updatesObj.product_name = req.body.product_name;
         console.log("updates obj: ", updatesObj);
     }
-    if (req.body.product_category){
+    if (req.body.product_category) {
         updatesObj.product_category = req.body.product_category;
         console.log("updates obj: ", updatesObj);
     }
-    if (req.body.product_price){
+    if (req.body.product_price) {
         updatesObj.product_price = req.body.product_price;
         console.log("updates obj: ", updatesObj);
     }
-    if (req.body.product_description){
+    if (req.body.product_description) {
         updatesObj.product_description = req.body.product_description;
         console.log("updates obj: ", updatesObj);
     }
-    if (req.body.quantity_remaining){
+    if (req.body.quantity_remaining) {
         updatesObj.quantity_remaining = req.body.quantity_remaining;
         console.log("updates obj: ", updatesObj);
     }
-    if (req.body.image){
+    if (req.body.image) {
         updatesObj.image = req.body.image;
         console.log("updates obj: ", updatesObj);
     }
@@ -208,7 +250,7 @@ router.put("/api/update/:id", function (req, res) {
     });
 });
 
-//routing to delete item
+//DELETE ITEM
 router.delete("/api/products/:id", function (req, res) {
     var condition = "id = " + req.params.id;
 

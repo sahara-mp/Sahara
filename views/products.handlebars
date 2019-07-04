@@ -72,21 +72,26 @@
     </div>
 </div>
 
+<br>
+
 <div class="row justify-content-center">
     <div class="col-5 m-1">
         <img src="{{product.image}}" class="card-img-top" alt="...">
     </div>
     <div class="col-5 border border-primary bg-light m-1">
-            <div class="col-12 justify-content-center">
-                <h2 "mx-auto"> {{product.product_name}}</h2>
-                <h2>${{product.product_price}}</h2>
-                <p>Quantity: {{product.quantity_remaining}}</p>
-                <p><small class="text-muted">Product Description: {{product.product_description}}</small></p>
-                <p><small class="text-muted">Seller: {{product.user}}</small></p>
-            </div>
-            <button class="buyButton productButtons" data-id="{{product.id}}">Buy Me!</button>
-            <button class="updateButton productButtons" data-id="{{product.id}}">Update Me!</button>
-            <button class="deleteButton productButtons" data-id="{{product.id}}">Delete Me!</button>
+        <div class="col-12 justify-content-center">
+            <br>
+            <h2 "mx-auto"> {{product.product_name}}</h2>
+            <h2>${{product.product_price}}</h2>
+            <p>Quantity: {{product.quantity_remaining}}</p>
+            <p><small class="text-muted">{{product.product_description}}</small></p>
+            <p><small class="text-muted">Seller: {{product.user}}</small></p>
+        </div>
+        <div class="productButtonsDiv">
+            <button class="buyButton productButtons bg-warning" data-id="{{product.id}}">Buy Me!</button>
+            <button class="updateButton productButtons bg-warning" data-id="{{product.id}}">Update Me!</button>
+            <button class="deleteButton productButtons bg-warning" data-id="{{product.id}}">Delete Me!</button>
+        </div>
     </div>
 
 </div>

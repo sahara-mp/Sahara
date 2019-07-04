@@ -12,10 +12,10 @@ $(function () {
         var updateItem = $(this).data("id");
         console.log("update Item Id: ", updateItem);
         window.location.replace(`/api/products/update/${updateItem}`)
-        
+
     });
 
-    $("#updateButtonItem").on("click", function (event){
+    $("#updateButtonItem").on("click", function (event) {
         event.preventDefault();
         var updatesObj = {};
         let id = $("#id").val().trim();
@@ -27,7 +27,7 @@ $(function () {
         let quantity_remaining = $("#quantity_remaining").val().trim();
         let image = $("#image").val().trim();
 
-        
+
 
         console.log("this is the user info: ", user);
         console.log("this is the id info: ", id);
@@ -38,60 +38,72 @@ $(function () {
         console.log("this is the quantity_remaining info: ", quantity_remaining);
         console.log("this is the image info: ", image);
 
-        if (user){
+        if (user) {
             console.log("this is the if statement user info");
             updatesObj.user = user;
             console.log("updates obj: ", updatesObj);
-        } 
-        if (product_name){
+        }
+        if (product_name) {
             updatesObj.product_name = product_name;
             console.log("updates obj: ", updatesObj);
         }
-        if (product_category){
+        if (product_category) {
             updatesObj.product_category = product_category;
             console.log("updates obj: ", updatesObj);
         }
-        if (product_price){
+        if (product_price) {
             updatesObj.product_price = product_price;
             console.log("updates obj: ", updatesObj);
         }
-        if (product_description){
+        if (product_description) {
             updatesObj.product_description = product_description;
             console.log("updates obj: ", updatesObj);
         }
-        if (quantity_remaining){
+        if (quantity_remaining) {
             updatesObj.quantity_remaining = quantity_remaining;
             console.log("updates obj: ", updatesObj);
         }
-        if (image){
+        if (image) {
             updatesObj.image = image;
             console.log("updates obj: ", updatesObj);
         }
         $.ajax("/api/update/" + id, {
             type: "PUT",
             data: updatesObj
-          }).then(
-            function() {
-              console.log("successfully update item");
-              // Reload the page to get the updated list
-              location.reload();
+        }).then(
+            function () {
+                console.log("successfully update item");
+                // Reload the page to get the updated list
+                location.reload();
             }
-          );
+        );
 
     })
 
     $(".deleteButton").on("click", function (event) {
         event.preventDefault();
-        
+
         let id = $(this).data("id");
         $.ajax("/api/products/" + id, {
-          type: "DELETE"
+            type: "DELETE"
         }).then(
-          function () {            
-            alert("Successfully deleted!")
-            window.location.replace(`/`);
-          }
+            function () {
+                alert("Successfully deleted!")
+                window.location.replace(`/`);
+            }
         )
     });
+
+    $(".buyButton").on("click", function (event) {
+        event.preventDefault();
+
+        window.location.replace(`/purchase`);
+    });
+
+    $(".go-back-button").on("click", function (event) {
+        event.preventDefault();
+
+        window.history.back();
+    })
 });
 

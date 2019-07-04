@@ -21,9 +21,7 @@ body {
 
 .signupDiv {
     display: flex;
-    /* flex-direction: column; */
     justify-content: center;
-    /* align-items: center; */
     flex-wrap: wrap;
 }
 
@@ -56,13 +54,30 @@ body {
     margin: 0 22px 20px 22px;
 }
 
-
 .productButtons {
     width: 100px;
     margin: 6px;
     border-radius: 5px;
 }
 
+.productButtonsDiv {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+/* NO PRODUCTS PAGE */
+.no-prod-div {
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+.no-prod-div h2 {
+    font-size: 45px;
+}
 
 .footer{
     position: absolute;
