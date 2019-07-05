@@ -15,11 +15,16 @@
         </div>
 
         {{!-- SEARCH BAR --}}
-        {{!-- <div class="mx-auto order-0">
-            <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            </form>
-        </div> --}}
+        <div class="SearchDiv">
+            <div class="mx-auto order-0">
+                <form class="form-inline" id="searchBar" method="POST" action="/api/search">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                        name="searchTerm" id="search-term">
+                    <input id="submit-button" type="submit" value="search">
+                </form>
+
+            </div>
+        </div>
 
         {{!-- PROFILE DROPDOWN --}}
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
@@ -42,33 +47,27 @@
 </div>
 
 
-<div class="container bg-light mt-5 col-6 pb-3">
-    <h3 class="text-danger text-center">
-        {{#if badLogin}}{{badLogin.badLogin}}{{else}}{{/if}}
-    </h3>
-    <form class="userLogin" method="POST" action="/api/login">
-        <div class="form-group pt-3">
-            <label for="UserEmail">Email address</label>
-            <input type="email" class="form-control" name="UserEmail" aria-describedby="emailHelp"
-                placeholder="Enter email" id="UserEmail">
+<br><br>
+
+<div class="container bg-white pt-3 pb-3">
+    <form>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Full Name</label>
+            <input type="fullname" class="form-control" id="exampleFormControlInput1">
+        </div>
+         <div class="form-group">
+            <label for="exampleFormControlInput1">Email address</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1">
         </div>
         <div class="form-group">
-            <label for="UserPassword">Password</label>
-            <input type="password" name="UserPassword" class="form-control" placeholder="Password" id="UserPassword">
+            <label for="exampleFormControlTextarea1">Message to Sahara</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
-        <button type="submit" class="btn btn-warning mb-2" id="loginButton">Log In!</button>
+        <button type="submit" class="btn btn-warning">Submit</button>
     </form>
 </div>
-{{!-- <form name="login">
-Username<input type="text" name="userid"/>
-Password<input type="password" name="pswrd"/>
-<input type="button" onclick="check(this.form)" value="Login"/>
-<input type="reset" value="Cancel"/>
-</form> --}}
 
-<br><br>
 
-<br><br>
 
 <div class="container-fluid footer bg-warning mb-0">
     <footer id="myFooter">

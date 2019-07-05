@@ -67,6 +67,11 @@ router.get("/about", function (req, res) {
     res.render("about");
 });
 
+//CONTACT PAGE
+router.get("/contact", function (req, res) {
+    res.render("contact");
+});
+
 //USER PROFILE PAGE 
 router.get("/userProfile", function (req, res) {
     res.render("profile");
