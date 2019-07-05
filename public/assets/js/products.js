@@ -6,6 +6,19 @@ $(function () {
         window.location.replace(`/products/${productId}`)
     });
 
+    $(".home-page-image").on("click", function (event) {
+        event.preventDefault();
+        // let str = this[0].alt;
+        // function getSecondPart(str) {
+        //     return str.split('=')[1];
+        // }
+    //    console.log(str);
+        // console.log(getSecondPart(str));
+        let productId = $(this);
+        console.log(productId);
+        // window.location.replace(`/products/${productId}`)
+    });
+
 
     $(".updateButton").on("click", function (event) {
         event.preventDefault();

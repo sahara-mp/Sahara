@@ -13,7 +13,7 @@ router.get("/", function (req, res) {
             "products": data,
             "test":"testing"
         };
-        // console.log("ViewModel", hbsObject);
+        console.log("ViewModel", hbsObject);
         res.render("index", hbsObject);
     });
 });

@@ -6,24 +6,16 @@ body {
 #searchBar {
     display: flex;
     justify-content: center;
-    /* flex-wrap: wrap; */
     flex-direction: row;
     flex-flow: nowrap;
 }
 
-/* Categories Button */
-
-/* .bg-warning {
-   
-} */
 
 /* Sign Up Page */
 
 .signupDiv {
     display: flex;
-    /* flex-direction: column; */
     justify-content: center;
-    /* align-items: center; */
     flex-wrap: wrap;
 }
 
@@ -36,15 +28,17 @@ body {
     cursor: pointer;
 }
 
+
+/* Home Page Images */
 .container img {
     width: 70%;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 #imageModifyDiv {
     display: flex;
-    /* flex-direction: column; */
     justify-content: center;
-    /* align-items: center; */
     flex-wrap: wrap;
 }
 
