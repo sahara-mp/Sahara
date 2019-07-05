@@ -28,12 +28,11 @@ body {
     cursor: pointer;
 }
 
-
-/* Home Page Images */
+/* Home Page Featured Products */
 .container img {
     width: 70%;
     margin-top: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 17px;
 }
 
 #imageModifyDiv {
@@ -42,3 +41,94 @@ body {
     flex-wrap: wrap;
 }
 
+.featured-info h2 {
+    text-align: center;
+}
+.featured-info p {
+    margin: 0 22px 20px 22px;
+}
+
+.productButtons {
+    width: 100px;
+    margin: 6px;
+    border-radius: 5px;
+}
+
+.productButtonsDiv {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.productImage {
+    min-height: 490px;
+}
+
+/* BACK BUTTON */
+.go-back-button-div {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+/* NO PRODUCTS PAGE */
+.no-prod-div {
+    height: 140px;
+}
+.no-prod-div h2 {
+    font-size: 45px;
+    color: orangered;
+}
+
+.footer{
+    position: absolute;
+    bottom: 0;
+}
+
+#myFooter {
+    color:white;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 0;
+
+}
+
+
+#myFooter ul{
+	list-style-type: none;
+    padding-left: 0;
+    line-height: 1.7;
+
+}
+
+#myFooter h5{
+	font-size: 18px;
+    color: black;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+#myFooter a{
+	color: white;
+	text-decoration: none;
+}
+
+#myFooter a:hover, #myFooter a:focus{
+	text-decoration: none;
+	color:blue;
+}
+
+#myFooter .myCols{
+	text-align: center;
+}
+
+
+
+
+
+@media screen and (max-width: 767px){
+	#myFooter {
+		text-align: center;
+	}
+}

@@ -46,7 +46,6 @@
     </nav>
 </div>
 
-
 <div class="container-fluid mt-3" style="display: flex;
     flex-direction: column;
     justify-content: center;
@@ -73,17 +72,18 @@
 
 <br>
 <div class="container" id="newItems">
-    <div class="card-group">
+    <div class="row justify-content-center">
         {{#each products}}
-        <div class="card mx-2">
+        <div class="col-3 border border-dark bg-light m-1">
             <div id="imageModifyDiv">
-                <img src="{{this.image}}" class="card-img-top img-fluid home-page-image" alt=`ProductImage={{this.id}}`>
+                <img src="{{this.image}}" class="card-img-top img-fluid product pointer" alt="productImage"
+                    data-id="{{id}}">
             </div>
-            <div class="card-body">
+            <div class="featured-info">
 
-                <h5 class="card-title" style="text-align: center">{{this.product_name}}</h5>
-                <h2 class="card-title">${{this.product_price}}</h2>
-                <p class="card-text">{{this.product_description}}</p>
+                <h5 class="product pointer" style="text-align: center" data-id="{{id}}">{{this.product_name}}</h5>
+                <h2>${{this.product_price}}</h2>
+                <p>{{this.product_description}}</p>
 
             </div>
         </div>
@@ -93,3 +93,49 @@
 </div>
 
 <br><br>
+
+<br><br>
+
+<div class="container-fluid bg-warning mb-0">
+    <footer id="myFooter">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 myCols">
+                    <h5>Get started</h5>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/api/search/all">Products</a></li>
+                        <li><a href="/login">Account</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 myCols">
+                    <h5>About us</h5>
+                    <ul>
+                        <li><a href="/about">Company Information</a></li>
+                        <li><a href="/contact">Contact us</a></li>
+                        <li><a href="#">Reviews</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 myCols">
+                    <h5>Support</h5>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Help desk</a></li>
+                        <li><a href="#">Forums</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 myCols">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {{!-- <div class="footer-copyright">
+            <p>© 2019 Sahara </p>
+        </div> --}}
+    </footer>
+</div>

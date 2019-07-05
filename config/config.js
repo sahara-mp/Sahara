@@ -1,7 +1,9 @@
 var mysql = require("mysql");
 const colors = require("colors");
 var config;
+
 require("dotenv").config();
+
 // let config = {
 //     local: {
 //         mysql: {

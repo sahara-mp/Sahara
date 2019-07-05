@@ -43,17 +43,20 @@
 
 
 <div class="container bg-light mt-5 col-6 pb-3">
-    <form>
+    <h3 class="text-danger text-center">
+        {{#if badLogin}}{{badLogin.badLogin}}{{else}}{{/if}}
+    </h3>
+    <form class="userLogin" method="POST" action="/api/login">
         <div class="form-group pt-3">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp"
-                placeholder="Enter email">
+            <label for="UserEmail">Email address</label>
+            <input type="email" class="form-control" name="UserEmail" aria-describedby="emailHelp"
+                placeholder="Enter email" id="UserEmail">
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="InputPassword1" placeholder="Password">
+            <label for="UserPassword">Password</label>
+            <input type="password" name="UserPassword" class="form-control" placeholder="Password" id="UserPassword">
         </div>
-        <button type="submit" class="btn btn-warning mb-2">Submit</button>
+        <button type="submit" class="btn btn-warning mb-2" id="loginButton">Log In!</button>
     </form>
 </div>
 {{!-- <form name="login">
@@ -62,3 +65,51 @@ Password<input type="password" name="pswrd"/>
 <input type="button" onclick="check(this.form)" value="Login"/>
 <input type="reset" value="Cancel"/>
 </form> --}}
+
+<br><br>
+
+<br><br>
+
+<div class="container-fluid footer bg-warning mb-0">
+    <footer id="myFooter">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 myCols">
+                    <h5>Get started</h5>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/api/search/all">Products</a></li>
+                        <li><a href="/login">Account</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 myCols">
+                    <h5>About us</h5>
+                    <ul>
+                        <li><a href="/about">Company Information</a></li>
+                        <li><a href="/contact">Contact us</a></li>
+                        <li><a href="#">Reviews</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 myCols">
+                    <h5>Support</h5>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Help desk</a></li>
+                        <li><a href="#">Forums</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 myCols">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {{!-- <div class="footer-copyright">
+            <p>© 2019 Sahara </p>
+        </div> --}}
+    </footer>
+</div>
