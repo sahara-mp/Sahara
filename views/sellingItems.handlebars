@@ -70,14 +70,14 @@
             {{#each products}}
             <div class="col-3 border border-dark bg-light m-1">
                 <div id="imageModifyDiv">
-                    <img src="{{this.image}}" class="card-img-top img-fluid product pointer" alt="productImage"
+                    <img src="{{image}}" class="card-img-top img-fluid product pointer" alt="productImage"
                         data-id="{{id}}">
                 </div>
                 <div class="featured-info">
 
-                    <h5 class="product pointer" style="text-align: center" data-id="{{id}}">{{this.product_name}}</h5>
-                    <h2>${{this.product_price}}</h2>
-                    <p>{{this.product_description}}</p>
+                    <h5 class="product pointer" style="text-align: center" data-id="{{id}}">{{product_name}}</h5>
+                    <h2>${{product_price}}</h2>
+                    <p>{{product_description}}</p>
 
                 </div>
             </div>
