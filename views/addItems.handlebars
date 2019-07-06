@@ -33,8 +33,6 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="/api/userProfile/{{session.email}}">Account</a>
-                        {{!-- <a class="dropdown-item" href="#">Order history</a>
-                        <a class="dropdown-item" href="#">Profile Information</a> --}}
                     </div>
                 </li>
             </ul>
@@ -44,7 +42,7 @@
 
 {{!-- Add Item form --}}
 <div class="signupDiv">
-    <div class="container bg-light mt-5 col-6">
+    <div class="container mt-5 col-6 container-add-items">
         <h2 class="text-danger text-center">
             {{#if thisExists}}{{thisExists.exists}}{{else}}{{/if}}
         </h2>
@@ -61,27 +59,10 @@
                 <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Item"
                     name="product_name">
             </div>
-            {{!-- <div class="form-group">
-                <label for="itemCategory">Please Choose a Category</label>
-                <div class="btn-group">
-                    <button class="btn btn-secondary btn-lg bg-warning" type="button">
-                        Categories
-                    </button>
-                    <button type="button"
-                        class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split bg-warning"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="ItemCategory">
-                        <span class="sr-only">Toggle Dropdown</span>
-                        </input>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Home Decor</a>
-                            <a class="dropdown-item" href="#">Movies</a>
-                            <a class="dropdown-item" href="#">Outdoors</a>
-                            <a class="dropdown-item" href="#">Pet Supplies</a>
-                            <a class="dropdown-item" href="#">Video Games</a>
-                            <a class="dropdown-item" href="#">Vinyl Records</a>
-                        </div>
-                </div>
-            </div> --}}
+
+
+
+            {{!-- FORM --}}
             <div class="form-group">
                 <label for="ItemCategory">Please Enter a Category</label>
                 <input type="text" class="form-control" placeholder="Item Category" name="product_category">

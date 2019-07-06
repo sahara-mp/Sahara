@@ -3,6 +3,11 @@ body {
     background-size: cover;
 }
 
+
+
+
+
+
 /* LOGO */
 .logo-box {
     padding: 0 !important;
@@ -16,6 +21,12 @@ body {
     padding: 0 !important;
     }
 
+
+
+
+
+
+    
 /* SEARCH BAR */
 #searchBar {
     display: flex;
@@ -26,6 +37,10 @@ body {
 .form-control-lg {
     color: rgb(172, 150, 30);
 }
+
+
+
+
 
 
 /* SIGN UP PAGE */
@@ -43,6 +58,11 @@ body {
     border-radius: 5px;
 }
 
+
+
+
+
+/* SIGN UP FORM */
 .container-signup {
     border: rgb(129, 95, 31) !important;
     border-style: solid !important;
@@ -61,6 +81,11 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+
+
+
+
+/* LOGIN FORM */
 .container-login {
     border: rgb(129, 95, 31) !important;
     border-style: solid !important;
@@ -77,6 +102,11 @@ body {
 .container-login .form-group {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+
+
+
+/* CONTACT US FORM */
 .container-contact {
     border: rgb(129, 95, 31) !important;
     border-style: solid !important;
@@ -95,9 +125,39 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+
+
+
+/* ADD ITEMS PAGE */
+.container-add-items {
+    border: rgb(129, 95, 31) !important;
+    border-style: solid !important;
+    border-width: 2px !important;
+    background-color: rgba(255, 243, 130, 0.856) !important;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 700px;
+}
+.container-add-items form {
+    width: 500px;
+}
+
+.container-add-items .form-group {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+
+
+
 .pointer {
     cursor: pointer;
 }
+
+
+
+
 
 /* Home Page Featured Products */
 .container img {
@@ -135,6 +195,10 @@ body {
     min-height: 490px;
 }
 
+
+
+
+
 /* BACK BUTTON */
 .go-back-button-div {
     display: flex;
@@ -150,6 +214,9 @@ body {
     flex-wrap: wrap;
 }
 
+
+
+
 /* NO PRODUCTS PAGE */
 .no-prod-div {
     height: 140px;
@@ -158,6 +225,47 @@ body {
 .no-prod-div h2 {
     font-size: 45px;
     color: rgb(255, 102, 0);
+}
+
+
+
+
+/* PROFILE PAGE */
+.profile-div {
+    height: 100px;
+    padding-top: 4px;
+}
+
+.profile-div h2 {
+    font-size: 45px;
+    color: rgb(255, 102, 0);
+}
+.profile-div #profile {
+   text-align: center;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+
+
+/* ITEMS FOR SALE PAGE */
+.items-for-sale-header h1 {
+    width: 100%;
+    text-align: center;
+    color: rgb(104, 45, 6);
+}
+
+
+/* FOOTER */
+.bottom{
+    position: absolute;
+    bottom: -150px;
+}
+
+/* FOOTER */
+.bottom2{
+    position: absolute;
+    bottom: -7000px;
 }
 
 .footer{

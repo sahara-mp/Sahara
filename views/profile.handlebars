@@ -17,7 +17,7 @@
         </div>
 
         {{!-- SEARCH BAR --}}
-       <div class="SearchDiv">
+        <div class="SearchDiv">
             <div class="mx-auto order-0">
                 <form class="form-inline" id="searchBar" method="POST" action="/api/search">
                     <input class="form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search"
@@ -52,13 +52,17 @@
 
 
 
-<br>
+<br><br><br><br><br><br><br>
 
 <div class="row justify-content-center">
-    <div class="col-3 border border-primary bg-light m-1">
-        <div class="col-12" id="{{userInfo.id}}">
-            <h5>Welcome, {{userInfo.UserFullName}}</h5>
-            <p>Email: {{userInfo.UserEmail}}</p>
+    <div class="col-8 border border-primary bg-light m-1">
+        <div class="col-12 justify-content-center profile-div" id="{{userInfo.id}}">
+            <div id="profile">
+                <h2>Welcome, {{userInfo.UserFullName}}</h2>
+            </div>
+            <div id="profile">
+                <p>Email: {{userInfo.UserEmail}}</p>
+            </div>
 
         </div>
     </div>
