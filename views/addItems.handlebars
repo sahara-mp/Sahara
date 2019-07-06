@@ -3,7 +3,9 @@
         <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/">SAHARA</a>
+                    <a class="nav-link logo-box" href="/">
+                        <img src="https://i.imgur.com/mwu0V9z.jpg" alt="Sahara_logo">
+                    </a>
                 </li>
                 {{!-- <li class="nav-item active">
                     <a class="nav-link" href="#">Features</a>
@@ -48,12 +50,16 @@
         </h2>
         <form class="addItemForm" method="POST" action="/api/addItem">
             <div class="form-group pt-3">
-                <label for="itemName">Enter User Name</label>
-                <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="User Name" name="user">
+                <input type="hidden" class="form-control" aria-describedby="emailHelp" placeholder="User Name"
+                    name="user" value="{{userInfo.UserFullName}}">
             </div>
+            <h2 class="text-center">
+                Enter Your Item Info!
+            </h2>
             <div class="form-group pt-3">
                 <label for="itemName">Enter Item Name</label>
-                <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Item" name="product_name">
+                <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Item"
+                    name="product_name">
             </div>
             {{!-- <div class="form-group">
                 <label for="itemCategory">Please Choose a Category</label>
@@ -112,16 +118,16 @@
                 <div class="col-sm-3 myCols">
                     <h5>Get started</h5>
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Products</a></li>
-                        <li><a href="#">Account</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/api/search/all">Products</a></li>
+                        <li><a href="/login">Account</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-3 myCols">
                     <h5>About us</h5>
                     <ul>
-                        <li><a href="#">Company Information</a></li>
-                        <li><a href="#">Contact us</a></li>
+                        <li><a href="/about">Company Information</a></li>
+                        <li><a href="/contact">Contact us</a></li>
                         <li><a href="#">Reviews</a></li>
                     </ul>
                 </div>

@@ -62,12 +62,9 @@
 
 
 <div class="container bg-warning pb-4">
-
-    
-        <h1 class="text-center">Your Order History</h1>
-    {{#if nothingOrdered}}
-    <h1 class="text-center">{{nothingOrdered.nothingOrdered}}</h1>
-    {{else}}
+    <div class="row text-center">
+        <h1 class="text-center">Your Current Items for Sale</h1>
+    </div>
     <div class="container" id="newItems">
         <div class="row justify-content-center">
             {{#each products}}
@@ -88,7 +85,7 @@
 
         </div>
     </div>
-    {{/if}}
+
 
 </div>
 

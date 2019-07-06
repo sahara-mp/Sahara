@@ -58,43 +58,26 @@
     </nav>
 </div>
 
+
 <br><br>
 
+<div class="container bg-white">
 
-<div class="container bg-warning pb-4">
-
-    
-        <h1 class="text-center">Your Order History</h1>
-    {{#if nothingOrdered}}
-    <h1 class="text-center">{{nothingOrdered.nothingOrdered}}</h1>
-    {{else}}
-    <div class="container" id="newItems">
-        <div class="row justify-content-center">
-            {{#each products}}
-            <div class="col-3 border border-dark bg-light m-1">
-                <div id="imageModifyDiv">
-                    <img src="{{this.image}}" class="card-img-top img-fluid product pointer" alt="productImage"
-                        data-id="{{id}}">
-                </div>
-                <div class="featured-info">
-
-                    <h5 class="product pointer" style="text-align: center" data-id="{{id}}">{{this.product_name}}</h5>
-                    <h2>${{this.product_price}}</h2>
-                    <p>{{this.product_description}}</p>
-
-                </div>
-            </div>
-            {{/each}}
-
-        </div>
-    </div>
-    {{/if}}
-
+    <h1 class="text-center border-bottom">Sahara</h1>
+    <br>
+    <h4>Sahara is an online marketplace where users can buy and sell their products. To purchase items, simply create an
+        account, find an item you want, and finalize the purchase to have the item shipped to your door!</h4>
+    <br>
+    <h4>Alternatively, on the same account you can sell items you have as well! Update the item with an image, price,
+        and other details and we will handle the rest.</h4>
+    <br>
+    <h4>Sahara was created by Daniel Wyatt, Elyria Garcia and Connor Perez in 2019.</h4>
+    <br>
 </div>
 
-<br><br>
 
-<br><br>
+
+
 
 <div class="container-fluid footer bg-warning mb-0">
     <footer id="myFooter">

@@ -58,43 +58,28 @@
     </nav>
 </div>
 
+
 <br><br>
 
-
-<div class="container bg-warning pb-4">
-
-    
-        <h1 class="text-center">Your Order History</h1>
-    {{#if nothingOrdered}}
-    <h1 class="text-center">{{nothingOrdered.nothingOrdered}}</h1>
-    {{else}}
-    <div class="container" id="newItems">
-        <div class="row justify-content-center">
-            {{#each products}}
-            <div class="col-3 border border-dark bg-light m-1">
-                <div id="imageModifyDiv">
-                    <img src="{{this.image}}" class="card-img-top img-fluid product pointer" alt="productImage"
-                        data-id="{{id}}">
-                </div>
-                <div class="featured-info">
-
-                    <h5 class="product pointer" style="text-align: center" data-id="{{id}}">{{this.product_name}}</h5>
-                    <h2>${{this.product_price}}</h2>
-                    <p>{{this.product_description}}</p>
-
-                </div>
-            </div>
-            {{/each}}
-
+<div class="container bg-white pt-3 pb-3">
+    <form>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Full Name</label>
+            <input type="fullname" class="form-control" id="exampleFormControlInput1">
         </div>
-    </div>
-    {{/if}}
-
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Email address</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Message to Sahara</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-warning">Submit</button>
+    </form>
 </div>
 
-<br><br>
 
-<br><br>
 
 <div class="container-fluid footer bg-warning mb-0">
     <footer id="myFooter">

@@ -31,6 +31,12 @@ var product = {
       cb(res);
     })
   },
+  searchHistory: function (item, cb) {
+    console.log("products searchHistory item: ", item);
+    orm.searchHistory("products", item, function (res) {
+      cb(res);
+    })
+  },
   // The variables cols and vals are arrays.
   create: function (cols, vals, cb) {
     orm.create("products", cols, vals, function (res) {
@@ -39,6 +45,11 @@ var product = {
   },
   update: function (objColVals, itemId, cb) {
     orm.update("products", objColVals, itemId, function (res) {
+      cb(res);
+    });
+  },
+  updateQuantity: function (itemId, cb) {
+    orm.updateQuantity("products", itemId, function (res) {
       cb(res);
     });
   },
