@@ -151,6 +151,29 @@ body {
 
 
 
+
+
+/* UPDATE ITEMS PAGE */
+.container-update-items {
+    border: rgb(129, 95, 31) !important;
+    border-style: solid !important;
+    border-width: 2px !important;
+    background-color: rgba(255, 243, 130, 0.856) !important;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 750px;
+}
+.container-update-items form {
+    width: 500px;
+}
+
+.container-update-items .form-group {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+
 .pointer {
     cursor: pointer;
 }
