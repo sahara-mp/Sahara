@@ -123,14 +123,16 @@ router.post("/finalPurchase", function (req, res) {
         if (data.quantity_remaining <= 0) {
             res.render("soldOut", { session: sess });
         } else {
-            user.buy(data.user, data.product_name, function (data) {
-                console.log("this is user buy data: ", data);
-                product.updateQuantity(req.body.id, function (data) {
-                    console.log("this is the purchase data: ", data);
-                    res.redirect("/confirmation");
+            let productName = data.product_name;
+            user.userPage(req.body.UserEmail, function (data){
+                user.buy(data.UserFullName, productName, function (data) {
+                    console.log("this is user buy data: ", data);
+                    product.updateQuantity(req.body.id, function (data) {
+                        console.log("this is the purchase data: ", data);
+                        res.redirect("/confirmation");
+                    })
                 })
             })
-
         }
     });
 })
@@ -150,11 +152,8 @@ router.get("/orderHistory/:userEmail", function (req, res) {
         user.buyerHistory(userName, function (data) {
             console.log("this is buyerhistory data: ", data);
             if (data.length < 1) {
-                var nothingOrdered = {
-                    nothingOrdered: "You have not ordered anything!",
-                    session: sess
-                }
-                res.render("orderhistory", { nothingOrdered: nothingOrdered })
+                console.log("this is hitting the nothingOrdered if statement");
+                res.render("noOrderHistory", {session: sess});
             } else {
                 var itemsNameArray = [];
                 for (var i = 0; i < data.length; i++) {
@@ -181,14 +180,17 @@ router.get("/sellingItems/:user", function (req, res) {
     user.userPage(userEmail, function (data) {
         console.log("this is seller profile data: ", data);
         let userName = data.UserFullName;
-        user.selling(data.UserFullName, function (data) {
+        user.selling(userName, function (data) {
+            console.log("this is selling data: ", data);
             var sellerItemsObj = {
                 products: data,
                 session: sess,
             }
             console.log(sellerItemsObj);
-            if (data.id == null) {
-                res.render("noItemsSelling");
+            let sellerDataArray = data.length;
+            console.log("sellerDataArray Length: ", sellerDataArray);
+            if (data[0].id == null) {
+                res.render("noItemsSelling", {session: sess});
             } else {
                 res.render("sellingItems", sellerItemsObj);
             }
@@ -250,15 +252,15 @@ router.get("/api/products/update/:product", function (req, res) {
 //CREATE NEW USER
 router.post("/api/EmailAndPassword", function (req, res) {
     console.log("this is req.body.UserEmail:", req.body.UserEmail);
+    sess = req.session;
     user.userPage(req.body.UserEmail, function (data) {
         console.log("this is UserPage data: ", data);
         if (data) {
             let userExists = {
                 exists: "This User Already Exists",
-                session: sess
             }
             console.log("This User Exists")
-            res.render("signup", { userExists: userExists })
+            res.render("signup", {userExists: userExists})
         } else {
             user.create([
                 "UserFullName", "UserEmail", "UserPassword"
@@ -276,6 +278,7 @@ router.post("/api/EmailAndPassword", function (req, res) {
 
                         // res.render("profile", { userInfo: data });
                         sess.email = req.body.UserEmail;
+                        console.log("create user session email: ", sess.email);
                         res.redirect(`/api/userProfile/${req.body.UserEmail}`);
 
                     });
