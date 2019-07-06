@@ -17,12 +17,12 @@
         </div>
 
         {{!-- SEARCH BAR --}}
-        <div class="SearchDiv">
+       <div class="SearchDiv">
             <div class="mx-auto order-0">
                 <form class="form-inline" id="searchBar" method="POST" action="/api/search">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                    <input class="form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search"
                         name="searchTerm" id="search-term">
-                    <input id="submit-button" type="submit" value="search">
+                    <input class="btn-lg" id="submit-button" type="submit" value="search">
                 </form>
 
             </div>
@@ -62,7 +62,7 @@
 
 
 <div class="container bg-warning pb-4">
-    <div class="row text-center">
+    <div class="row text-center items-for-sale-header">
         <h1 class="text-center">Your Current Items for Sale</h1>
     </div>
     <div class="container" id="newItems">
@@ -70,14 +70,14 @@
             {{#each products}}
             <div class="col-3 border border-dark bg-light m-1">
                 <div id="imageModifyDiv">
-                    <img src="{{this.image}}" class="card-img-top img-fluid product pointer" alt="productImage"
+                    <img src="{{image}}" class="card-img-top img-fluid product pointer" alt="productImage"
                         data-id="{{id}}">
                 </div>
                 <div class="featured-info">
 
-                    <h5 class="product pointer" style="text-align: center" data-id="{{id}}">{{this.product_name}}</h5>
-                    <h2>${{this.product_price}}</h2>
-                    <p>{{this.product_description}}</p>
+                    <h5 class="product pointer" style="text-align: center" data-id="{{id}}">{{product_name}}</h5>
+                    <h2>${{product_price}}</h2>
+                    <p>{{product_description}}</p>
 
                 </div>
             </div>
@@ -93,7 +93,7 @@
 
 <br><br>
 
-<div class="container-fluid footer bg-warning mb-0">
+<div class="container-fluid bottom2 bg-warning mb-0">
     <footer id="myFooter">
         <div class="container">
             <div class="row">
