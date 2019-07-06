@@ -3,7 +3,9 @@
         <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/">SAHARA</a>
+                    <a class="nav-link logo-box" href="/">
+                        <img src="https://i.imgur.com/mwu0V9z.jpg" alt="Sahara_logo">
+                    </a>
                 </li>
                 {{!-- <li class="nav-item active">
                     <a class="nav-link" href="#">Features</a>
@@ -34,12 +36,22 @@
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Account
                     </a>
+                    {{#if session.email}}
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/login">Log In</a>
+                        <a class="dropdown-item" href="/api/userProfile/{{session.email}}">Account</a>
+                        <a class="dropdown-item" href="/logout">Logout</a>
+                        {{!-- <a class="dropdown-item" href="#">Order history</a>
+                        <a class="dropdown-item" href="#">Profile Information</a> --}}
+                    </div>
+
+                    {{else}}
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/login" data-id="{{session.email}}">Log In</a>
                         <a class="dropdown-item" href="/signup">Sign Up</a>
                         {{!-- <a class="dropdown-item" href="#">Order history</a>
                         <a class="dropdown-item" href="#">Profile Information</a> --}}
                     </div>
+                    {{/if}}
                 </li>
             </ul>
         </div>
@@ -47,4 +59,3 @@
 </div>
 
 <br><br>
-

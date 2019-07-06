@@ -3,7 +3,9 @@
         <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/">SAHARA</a>
+                    <a class="nav-link logo-box" href="/">
+                        <img src="https://i.imgur.com/mwu0V9z.jpg" alt="Sahara_logo">
+                    </a>
                 </li>
                 {{!-- <li class="nav-item active">
                     <a class="nav-link" href="#">Features</a>
@@ -64,25 +66,25 @@
         <h1 class="text-center">Your Current Items for Sale</h1>
     </div>
     <div class="container" id="newItems">
-    <div class="row justify-content-center">
-        {{#each products}}
-        <div class="col-3 border border-dark bg-light m-1">
-            <div id="imageModifyDiv">
-                <img src="{{this.image}}" class="card-img-top img-fluid product pointer" alt="productImage"
-                    data-id="{{id}}">
-            </div>
-            <div class="featured-info">
+        <div class="row justify-content-center">
+            {{#each products}}
+            <div class="col-3 border border-dark bg-light m-1">
+                <div id="imageModifyDiv">
+                    <img src="{{this.image}}" class="card-img-top img-fluid product pointer" alt="productImage"
+                        data-id="{{id}}">
+                </div>
+                <div class="featured-info">
 
-                <h5 class="product pointer" style="text-align: center" data-id="{{id}}">{{this.product_name}}</h5>
-                <h2>${{this.product_price}}</h2>
-                <p>{{this.product_description}}</p>
+                    <h5 class="product pointer" style="text-align: center" data-id="{{id}}">{{this.product_name}}</h5>
+                    <h2>${{this.product_price}}</h2>
+                    <p>{{this.product_description}}</p>
 
+                </div>
             </div>
+            {{/each}}
+
         </div>
-        {{/each}}
-
     </div>
-</div>
 
 
 </div>

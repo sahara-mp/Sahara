@@ -45,7 +45,7 @@ var orm = {
       cb(result);
     });
   },
-  search: function (tableInput, item, cb) { 
+  search: function (tableInput, item, cb) {
     var queryString = `SELECT * FROM ${tableInput} WHERE CONCAT(PRODUCT_NAME, PRODUCT_CATEGORY, PRODUCT_DESCRIPTION) LIKE '%${item}%';`;
     var searchQuery = config.query(queryString, item, function (err, result) {
       if (err) {
@@ -54,7 +54,7 @@ var orm = {
       cb(result);
     });
   },
-  searchid: function (tableInput, item, cb) { 
+  searchid: function (tableInput, item, cb) {
     var queryString = `SELECT * FROM ${tableInput} WHERE id = ${item};`;
     var searchQuery = config.query(queryString, item, function (err, result) {
       if (err) {
@@ -63,7 +63,7 @@ var orm = {
       cb(result[0]);
     });
   },
-  searchProduct: function (tableInput, item, cb) { 
+  searchProduct: function (tableInput, item, cb) {
     var queryString = `SELECT * FROM ${tableInput} WHERE PRODUCT_NAME = ${item};`;
     var searchQuery = config.query(queryString, item, function (err, result) {
       if (err) {
@@ -72,7 +72,28 @@ var orm = {
       cb(result[0]);
     });
   },
-  topThree: function (tableInput, cb) { 
+  searchHistory: function (tableInput, item, cb) {
+    console.log("this is orm item: ", item);
+
+    var queryString = "SELECT * FROM " + tableInput;
+    queryString += " WHERE PRODUCT_NAME in " 
+    queryString += "( ";
+    queryString += printQuestionMarks(item.length);
+    queryString += " )";
+    queryString += ";"
+    // var queryString = `SELECT * FROM ${tableInput} WHERE PRODUCT_NAME = ?;`
+
+    console.log(queryString);
+    var searchQuery = config.query(queryString, item, function (err, result) {
+      
+      if (err) {
+        throw err;
+      }
+      console.log("this is the searchHistory searchQuery: ", searchQuery);
+      cb(result);
+    });
+  },
+  topThree: function (tableInput, cb) {
     var queryString = `SELECT * FROM ${tableInput} ORDER BY quantity_remaining DESC LIMIT 3;`;
     var searchQuery = config.query(queryString, function (err, result) {
       if (err) {
@@ -81,7 +102,7 @@ var orm = {
       cb(result);
     });
   },
-  category: function (tableInput, item, cb) { 
+  category: function (tableInput, item, cb) {
     var queryString = `SELECT * FROM ${tableInput} WHERE PRODUCT_CATEGORY = '${item}';`;
     var searchQuery = config.query(queryString, item, function (err, result) {
       if (err) {
@@ -93,15 +114,15 @@ var orm = {
   userPage: function (table, user, cb) {
     var queryString = `SELECT * FROM ${table} WHERE UserEmail = '${user}';`;
     var searchQuery = config.query(queryString, user, function (err, result) {
-      if (err){
+      if (err) {
         throw err;
       }
       cb(result[0]);
     });
   },
-  selling: function(table1, table2, user, cb){
+  selling: function (table1, table2, user, cb) {
     console.log("this is orm selling user Email:", user);
-    
+
     var queryString = `SELECT ${table1}.UserFullName, ${table2}.* FROM ${table1} LEFT JOIN ${table2} ON ${table1}.UserFullName = ${table2}.user WHERE ${table1}.UserFullName = '${user}';`
 
     console.log("this is the login query string: ", queryString);
@@ -154,12 +175,12 @@ var orm = {
       cb(result);
     });
   },
-  delete: function(table, condition, cb) {
+  delete: function (table, condition, cb) {
     var queryString = "DELETE FROM " + table;
     queryString += " WHERE ";
     queryString += condition;
 
-    config.query(queryString, function(err, result) {
+    config.query(queryString, function (err, result) {
       if (err) {
         throw err;
       }
@@ -167,10 +188,10 @@ var orm = {
       cb(result);
     });
   },
-  login: function(table, userLogin, cb){
+  login: function (table, userLogin, cb) {
     console.log("this is orm userEmail:", userLogin[0]);
     console.log("this is orm userpassword: ", userLogin[1]);
-    
+
     var queryString = `SELECT * FROM ${table} WHERE UserEmail = ? && UserPassword = ?`;
 
     console.log("this is the login query string: ", queryString);
@@ -181,8 +202,48 @@ var orm = {
       cb(result[0]);
     });
   },
+  buy: function (table, user, item, cb) {
+    console.log("orm user:", user);
+    console.log("orm item: ", item);
 
-  
+    var queryString = `INSERT INTO ${table} (buyer, item) VALUES ('${user}', '${item}');`
+    console.log("this is the querystring: ", queryString);
+    config.query(queryString, function (err, result) {
+      if (err) {
+        throw err;
+      }
+
+      cb(result);
+    });
+
+  },
+  buyerHistory: function (table, user, cb){
+    console.log("this is buyHistory user", user);
+    var queryString = `SELECT * from ${table} WHERE buyer = '${user}';`
+    config.query(queryString, function (err, result) {
+      if (err) {
+        throw err;
+      }
+
+      cb(result);
+    });
+  },
+  updateQuantity: function (table, item, cb) {
+    console.log("this is itemId: ", item);
+
+    var queryString = `UPDATE ${table} SET quantity_remaining = quantity_remaining - 1 WHERE id =  '${item}';`;
+
+    console.log("this is the querystring: ", queryString);
+    config.query(queryString, function (err, result) {
+      if (err) {
+        throw err;
+      }
+
+      cb(result);
+    });
+  }
+
+
 };
 
 // Export the orm object for the model (cat.js).

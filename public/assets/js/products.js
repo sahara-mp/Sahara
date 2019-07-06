@@ -119,10 +119,10 @@ $(function () {
         window.history.back();
     })
 
-    $(".finalpurchase").on("click", function (event){
-        event.preventDefault();
+    // $(".finalpurchase").on("click", function (event){
+    //     event.preventDefault();
 
-        window.location.replace('/confirmation')
-    })
+    //     window.location.replace('/confirmation')
+    // })
 });
 

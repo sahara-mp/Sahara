@@ -8,7 +8,7 @@ var user = {
     },
     userPage: function (user, cb) {
       orm.userPage("EmailAndPassword", user, function (res) {
-        cb(res);
+        cb(res); 
       });
     },
     login: function(userLogin, cb){ 
@@ -32,12 +32,16 @@ var user = {
         cb(res);
       });
     },
-
-    // update: function (objColVals, condition, cb) {
-    //   orm.update("products", objColVals, condition, function (res) {
-    //     // UPDATE prodcuts SET Quantity = Quantity - 1 WHERE      });
-    // },
-
+    buy: function (user, item, cb) {
+      orm.buy("buyers", user, item, function(res){
+        cb(res);
+      })
+    },
+    buyerHistory: function(user, cb) {
+      orm.buyerHistory("buyers", user, function(res){
+        cb(res);
+      })
+    }
 
     // delete: function(){
     //   orm.delete("EmailAndPassword")

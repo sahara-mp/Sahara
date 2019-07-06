@@ -61,35 +61,10 @@
 <br><br>
 
 
-<div class="container bg-warning pb-4">
-
-    
-        <h1 class="text-center">Your Order History</h1>
-    {{#if nothingOrdered}}
-    <h1 class="text-center">{{nothingOrdered.nothingOrdered}}</h1>
-    {{else}}
-    <div class="container" id="newItems">
-        <div class="row justify-content-center">
-            {{#each products}}
-            <div class="col-3 border border-dark bg-light m-1">
-                <div id="imageModifyDiv">
-                    <img src="{{this.image}}" class="card-img-top img-fluid product pointer" alt="productImage"
-                        data-id="{{id}}">
-                </div>
-                <div class="featured-info">
-
-                    <h5 class="product pointer" style="text-align: center" data-id="{{id}}">{{this.product_name}}</h5>
-                    <h2>${{this.product_price}}</h2>
-                    <p>{{this.product_description}}</p>
-
-                </div>
-            </div>
-            {{/each}}
-
-        </div>
+<div class="container">
+    <div class="row justify-content-center">
+        <h1 class="text-center bg-warning">Sold Out!</h1>
     </div>
-    {{/if}}
-
 </div>
 
 <br><br>
