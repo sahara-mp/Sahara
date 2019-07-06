@@ -99,6 +99,19 @@ var orm = {
       cb(result[0]);
     });
   },
+  selling: function(table1, table2, user, cb){
+    console.log("this is orm selling user Email:", user);
+    
+    var queryString = `SELECT ${table1}.UserFullName, ${table2}.* FROM ${table1} LEFT JOIN ${table2} ON ${table1}.UserFullName = ${table2}.user WHERE ${table1}.UserFullName = '${user}';`
+
+    console.log("this is the login query string: ", queryString);
+    var searchQuery = config.query(queryString, user, function (err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
+  },
   create: function (table, cols, vals, cb) {
     var queryString = "INSERT INTO " + table;
 
@@ -168,19 +181,8 @@ var orm = {
       cb(result[0]);
     });
   },
-  loginEmail: function(table, userEmail, cb){
-    console.log("this is orm userEmail:", userEmail);
-    
-    var queryString = `SELECT * FROM ${table} WHERE UserEmail = '${userEmail}'`;
 
-    console.log("this is the login query string: ", queryString);
-    var searchQuery = config.query(queryString, userEmail, function (err, result) {
-      if (err) {
-        throw err;
-      }
-      cb(result[0]);
-    });
-  }
+  
 };
 
 // Export the orm object for the model (cat.js).

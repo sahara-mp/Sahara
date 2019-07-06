@@ -109,14 +109,20 @@ $(function () {
 
     $(".buyButton").on("click", function (event) {
         event.preventDefault();
-
-        window.location.replace(`/purchase`);
+        var id = $(this).data("id");
+        window.location.replace(`/purchase/${id}`);
     });
 
     $(".go-back-button").on("click", function (event) {
         event.preventDefault();
 
         window.history.back();
+    })
+
+    $(".finalpurchase").on("click", function (event){
+        event.preventDefault();
+
+        window.location.replace('/confirmation')
     })
 });
 

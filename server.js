@@ -1,17 +1,20 @@
 // require("dotenv").config();
 const colors = require("colors");
 
-var express = require('express');
-var app = express();
+const express = require('express');
+const session = require('express-session');
+const app = express();
 var login = require('./routes/loginroutes');
+
 var PORT = process.env.PORT || 9000;
 
 var config = require("./config/config.js");
+
 let exphbs = require("express-handlebars");
 let routes = require("./controllers/sahara-controller.js");
 let path = require('path');
 
-
+app.use(session({secret: 'ssshhhhh',saveUninitialized: true,resave: true}));
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());

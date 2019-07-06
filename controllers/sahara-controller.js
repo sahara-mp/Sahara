@@ -4,14 +4,21 @@ let user = require("../models/user.js");
 // let category = require("../public/assets/js/categories.js");
 
 var router = express.Router();
-
+var sess;
 
 //HOME PAGE
 router.get("/", function (req, res) {
+    sess = req.session;
+    if (sess.email) {
+        console.log("there is an email assigned!");
+        // return res.redirect('/admin');
+    }
+    console.log("this is index sess: ", sess);
     product.topThree(function (data) {
         var hbsObject = {
             "products": data,
-            "test": "testing"
+            "test": "testing",
+            session: sess
         };
         console.log("ViewModel", hbsObject);
         res.render("index", hbsObject);
@@ -83,17 +90,16 @@ router.get("/signup", function (req, res) {
 });
 
 //PURCHASE PAGE
-router.get("/purchase", function (req, res) {
-    // console.log(req.params.product);
-    // product.searchid(req.params.product, function (data) {
-    //     // console.log(data.product_name);
-    //     if (!data) {
-    //         res.render("noProduct");
-    //     } else {
-    //         res.render("products", { product: data });
-    //     }
-    // });
-    res.render('purchase')
+router.get("/purchase/:id", function (req, res) {
+    console.log(req.params.id);
+    product.searchid(req.params.id, function (data) {
+        // console.log(data.product_name);
+        if (!data) {
+            res.render("noProduct");
+        } else {
+            res.render("purchase", { product: data });
+        }
+    });
 });
 
 //PURCHASE CONFIRMATION PAGE
@@ -102,13 +108,45 @@ router.get("/confirmation", function (req, res) {
 });
 
 //ORDER HISTORY PAGE
-router.get("/orderhistory", function (req, res) {
+router.get("/orderhistory/", function (req, res) {
+    // let userEmail = req.params.user;
     res.render("orderhistory");
 });
 
+router.get("/sellingItems/:user", function (req,res){
+    let userEmail = req.params.user;
+    user.userPage(userEmail, function (data) {
+        console.log("this is seller profile data: ", data);
+        let userName = data.UserFullName;
+        user.selling(data.UserFullName, function(data){
+            var sellerItemsObj = {
+                products: data,
+                session: sess,
+            }
+            console.log(sellerItemsObj);
+            if (data.id == null) {
+                res.render("noItemsSelling");
+            } else {
+                res.render("sellingItems", sellerItemsObj);
+            }
+        })
+    })
+
+    
+})
+
 //ADD ITEMS PAGE
 router.get("/addItems", function (req, res) {
-    res.render("addItems");
+    user.userPage(sess.email, function (data) {
+        console.log("this is userProfile data: ", data)
+        console.log("this is userProfile sess: ", sess);
+        var userObj = {
+            userInfo: data,
+            session: sess,
+        }
+        res.render("addItems", userObj);
+    })
+    
 });
 
 //PRODUCTS PAGE
@@ -141,15 +179,15 @@ router.get("/api/products/update/:product", function (req, res) {
 //CREATE NEW USER
 router.post("/api/EmailAndPassword", function (req, res) {
     console.log("this is req.body.UserEmail:", req.body.UserEmail);
-    user.userPage(req.body.UserEmail, function (data){
+    user.userPage(req.body.UserEmail, function (data) {
         console.log("this is UserPage data: ", data);
-        if (data){
+        if (data) {
             let userExists = {
                 exists: "This User Already Exists"
             }
             console.log("This User Exists")
             res.render("signup", { userExists: userExists })
-        }else {
+        } else {
             user.create([
                 "UserFullName", "UserEmail", "UserPassword"
             ], [
@@ -161,48 +199,72 @@ router.post("/api/EmailAndPassword", function (req, res) {
                     console.log("this is create result: ", result);
                     let userId = result.insertId;
                     console.log(userId);
-                    user.loginEmail(req.body.UserEmail, function(data) {
+                    user.userPage(req.body.UserEmail, function (data) {
                         console.log("this is login data: ", data)
 
-                            res.render("profile", { userInfo: data });
+                        // res.render("profile", { userInfo: data });
+                        sess.email = req.body.UserEmail;
+                        res.redirect(`/api/userProfile/${req.body.UserEmail}`);
 
                     });
                     //login function bypassing checking password
                 });
         }
-    }) 
-    
+    })
+
 });
 
 // user login
 router.post("/api/login", function (req, res) {
     console.log(req.body);
+    sess = req.session;
+
     let UserEmail = req.body.UserEmail;
     let UserPassword = req.body.UserPassword;
     console.log("UserEmail: ", UserEmail);
     console.log("UserPass: ", UserPassword);
     let userLogin = [UserEmail, UserPassword]
     console.log("this is userLogin", userLogin);
-    user.login(userLogin, function(data) {
+    user.login(userLogin, function (data) {
         console.log("this is login data: ", data)
         if (!data) {
             let badLogin = {
                 badLogin: "The Email or Password entered is incorrect"
             }
-            res.render("login", {badLogin: badLogin});
+            res.render("login", { badLogin: badLogin });
         } else {
-            res.render("profile", { userInfo: data });
+            // res.render("profile", { userInfo: data });
+            sess.email = req.body.UserEmail;
+            console.log("this is sess", sess.email);
+            res.redirect(`/api/userProfile/${UserEmail}`);
         }
     });
 });
 
+//render userprofile
 router.get("/api/userProfile/:user", function (req, res) {
     let userEmail = req.params.user;
     user.userPage(userEmail, function (data) {
         console.log("this is userProfile data: ", data)
-        res.render("profile", { userInfo: data });
+        console.log("this is userProfile sess: ", sess);
+        var userObj = {
+            userInfo: data,
+            session: sess,
+        }
+        res.render("profile", userObj);
     })
 })
+
+//logout function
+router.get('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            return console.log(err);
+        }
+        res.redirect('/');
+    });
+
+});
 
 
 
@@ -219,7 +281,8 @@ router.post("/api/addItem", function (req, res) {
     };
     console.log(newItem);
     product.search(newItem.product_name, function (data) {
-        if (data[0].product_name) {
+        console.log("this is new item data", data);
+        if (data.length > 0) {
             let alreadyExists = {
                 exists: "This Item Already Exists"
             }
@@ -233,7 +296,8 @@ router.post("/api/addItem", function (req, res) {
                 ], function (result) {
                     //redirect to new item page listing after completion
                     console.log(result);
-                    res.render("products", { product: newItem });
+                    res.redirect(`/api/products/${result.insertId}`);
+                    // res.render("products", { product: newItem });
 
                 });
         }

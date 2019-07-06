@@ -16,8 +16,8 @@ var user = {
         cb(res);
       })
     },
-    loginEmail: function(userEmail, cb){ 
-      orm.loginEmail("EmailAndPassword", userEmail, function (res){
+    selling: function(userEmail, cb){ 
+      orm.selling("EmailAndPassword", "products", userEmail, function (res){
         cb(res);
       })
     },
@@ -32,6 +32,13 @@ var user = {
         cb(res);
       });
     },
+
+    // update: function (objColVals, condition, cb) {
+    //   orm.update("products", objColVals, condition, function (res) {
+    //     // UPDATE prodcuts SET Quantity = Quantity - 1 WHERE      });
+    // },
+
+
     // delete: function(){
     //   orm.delete("EmailAndPassword")
     // }

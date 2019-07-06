@@ -48,9 +48,11 @@
         </h2>
         <form class="addItemForm" method="POST" action="/api/addItem">
             <div class="form-group pt-3">
-                <label for="itemName">Enter User Name</label>
-                <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="User Name" name="user">
+                <input type="hidden" class="form-control" aria-describedby="emailHelp" placeholder="User Name" name="user" value="{{userInfo.UserFullName}}">
             </div>
+            <h2 class="text-center">
+                Enter Your Item Info!
+            </h2>
             <div class="form-group pt-3">
                 <label for="itemName">Enter Item Name</label>
                 <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Item" name="product_name">

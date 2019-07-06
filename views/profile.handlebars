@@ -35,9 +35,10 @@
                         Account
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/userProfile">Account</a>
                         <a class="dropdown-item" href="/addItems">Add Items</a>
                         <a class="dropdown-item" href="/orderhistory">Order History</a>
+                        <a class="dropdown-item" href="/sellingItems/{{session.email}}">Items for Sale</a>
+                        <a class="dropdown-item" href="/logout">Logout</a>
                         {{!-- <a class="dropdown-item" href="#">Order history</a>
                         <a class="dropdown-item" href="#">Profile Information</a> --}}
                     </div>
